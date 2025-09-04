@@ -1,0 +1,2987 @@
+body {
+    background: linear-gradient(65deg, rgba(255, 255, 255, 0.49) -1.59%, rgba(255, 255, 255, 0.46) 99.42%);
+    scroll-behavior: smooth;
+    height: 5250px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav a,
+ul li a {
+    transition: transform 0.4s ease;
+}
+
+nav a:hover,
+ul li a:hover {
+    transform: scale(1.1);
+    /* Увеличивает элемент на 10% */
+}
+
+.thumb {
+    max-height: 758px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 132px;
+}
+
+.content {
+    width: 1251;
+    height: 719;
+    top: 28px;
+    left: 120px;
+}
+
+.header {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    margin-bottom: 40px;
+}
+
+.logo {
+    position: fixed;
+    top: 26px;
+    left: 159px;
+    width: 189px;
+    height: 40px;
+}
+
+.logo img {
+    position: absolute;
+    left: 0;
+    top: 3px;
+    width: 35px;
+    height: 34px;
+}
+
+.logo-text {
+    width: 146px;
+    position: absolute;
+    left: 43px;
+    top: 0;
+    color: #3D3D3F;
+    font-size: 32px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 560;
+    line-height: 40px;
+    letter-spacing: 0.8px;
+    word-wrap: break-word;
+}
+
+.nav {
+    display: flex;
+    position: absolute;
+    top: 37px;
+    left: 529px;
+}
+
+.nav a {
+    color: #150A29;
+    font-size: 16px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    line-height: 28px;
+    text-align: center;
+    text-decoration: none;
+    margin-right: 51px;
+    word-wrap: break-word;
+}
+
+.contact-us {
+    padding-left: 163px;
+}
+
+.contact-us a {
+    background-color: #FD695A;
+    border-radius: 50px;
+    padding: 16px 27px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 510;
+    line-height: 28px;
+    transition: background-color 0.4s ease;
+}
+
+.contact-us a:hover {
+    background-color: #29d053;
+}
+
+.title {
+    width: 607px;
+    height: 188px;
+    position: relative;
+    left: 163px;
+    top: 126px;
+}
+
+.title-text {
+    width: 607px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.title-best-marketing,
+.title-digital-agency {
+    font-family: "Mulish", sans-serif;
+    font-weight: 765;
+    font-size: 68px;
+    line-height: 72px;
+    letter-spacing: 3px;
+    word-wrap: break-word;
+}
+
+.title-best-marketing {
+    color: #3D3D3F;
+}
+
+.title-best-marketing .title-marketing {
+    color: #FD695A;
+}
+
+.title-digital-agency {
+    color: #3D3D3F;
+}
+
+.title-decoration {
+    width: 404px;
+    height: 116px;
+    position: absolute;
+    left: 163px;
+    top: -13px;
+    z-index: 1;
+    /* Располагаем выше текста Marketing */
+}
+
+.title-decoration img {
+    width: 100%;
+    height: 100%;
+}
+
+.happy-girl img {
+    left: 475px;
+    top: -57px;
+    position: relative;
+}
+
+.title-text p {
+    color: #3D3D3F;
+    font-size: 21px;
+    font-family: "Manrope", sans-serif;
+    font-weight: 400;
+    line-height: 34px;
+    word-wrap: break-word;
+    padding-top: 67px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+@font-face {
+    font-family: 'CustomMulish';
+    src: local('Mulish'), url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap') format('woff2');
+}
+
+.main-button {
+    display: flex;
+    align-items: center;
+    /* Вертикальное выравнивание по центру */
+    margin-top: 203px;
+    margin-left: 162px;
+}
+
+.get-started {
+    background-color: #FD695A;
+    border-radius: 50px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-family: 'CustomMulish', sans-serif;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 0.52px;
+}
+
+.main-button a:first-of-type {
+    transition: background-color 0.4s ease;
+    z-index: 2;
+}
+
+.main-button a:first-of-type:hover {
+    background-color: #29d053;
+}
+
+.main-button a:last-of-type {
+    transition: color 0.4s ease;
+    z-index: 2;
+}
+
+.main-button a:last-of-type:hover {
+    color: #29d053;
+}
+
+.main-button img {
+    position: relative;
+    top: 25px;
+    /* Устанавливаем отступ сверху для опускания иконки */
+    left: -60px;
+    margin-right: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.main-button a:last-of-type {
+    text-decoration: none;
+    color: #FD695A;
+    font-size: 18px;
+    font-family: 'CustomMulish', sans-serif;
+    font-weight: 400;
+    line-height: 28px;
+    margin-left: -155px;
+    letter-spacing: 0.52px;
+}
+
+/* agency */
+.agency {
+    margin-right: auto;
+    margin-left: auto;
+    background: linear-gradient(65.25deg, rgba(255, 255, 255, 0.49) -1.59%, rgba(255, 255, 255, 0.46) 99.42%);
+    margin-bottom: 110px;
+}
+
+.clients {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    /* Горизонтальное выравнивание по центру */
+    align-items: center;
+    /* Вертикальное выравнивание по центру */
+    margin-right: 49px;
+    flex-wrap: wrap;
+    /* Позволяет элементам переноситься на новую строку */
+    margin-bottom: 55px;
+}
+
+.clients span {
+    width: 214px;
+    color: #3D3D3F;
+    font-size: 18px;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 700;
+    word-wrap: break-word;
+    flex-basis: 100%;
+    /* Занимает всю ширину для переноса на следующую строку */
+    text-align: center;
+    /* Выравнивание текста по центру */
+    margin-bottom: 51px;
+}
+
+.clients img {
+    margin-left: 20px;
+}
+
+/* Web sections */
+
+.section-service {
+    display: grid;
+    grid-template-columns: minmax(200px, 1fr) minmax(200px, 1fr);
+    /* Левая и правая половины одинаковой ширины */
+    height: 590px;
+    /* Высота блока */
+    margin-bottom: 123px;
+}
+
+.section-service-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Центрируем содержимое по горизонтали */
+    align-items: flex-start;
+    /* Центрируем содержимое по вертикали */
+    margin-left: 160px;
+    margin-top: 25px;
+}
+
+.h2-container {
+    display: flex;
+    /* Делаем заголовок и картинку частью flex-контейнера */
+    align-items: center;
+    /* Центрируем картинку и текст вертикально */
+}
+
+.h2-container img {
+    margin-left: -105px;
+    margin-bottom: -17px;
+}
+
+.section-service-right {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Две колонки */
+    grid-template-rows: repeat(2, 1fr);
+    /* Две строки */
+    gap: 32px;
+    margin-right: 190px;
+}
+
+.service-grid-item {
+    background-color: #FFFFFF;
+    /* Белый фон */
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Центрируем содержимое по горизонтали */
+    align-items: center;
+    position: relative;
+}
+
+.section-service-left h1 {
+    color: #FD695A;
+    font-family: 'Mulish', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 50px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.h2-container h2 {
+    color: #3D3D3F;
+    font-family: 'Mulish', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 50px;
+    margin-bottom: 40px;
+}
+
+.section-service-left p {
+    color: #515151;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 26px;
+    margin-bottom: 32px;
+}
+
+.section-service-left a {
+    background-color: #FD695A;
+    border-radius: 50px;
+    padding: 11px 24px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 0.4px;
+    transition: background-color 0.4s ease;
+}
+
+.section-service-left a:hover {
+    background-color: #29d053;
+}
+
+.service-grid-item h1 {
+    color: #37383D;
+    font-family: 'Mulish', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    margin-bottom: 12px;
+}
+
+.service-grid-item p {
+    color: #747474;
+    font-family: "DM Sans", sans-serif;
+    font-size: 13.5px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    /* 192.593% */
+    letter-spacing: 0.3px;
+    margin-bottom: 8px;
+    margin-right: 7px;
+}
+
+.service-grid-item a {
+    color: #3D3D3F;
+    font-family: "DM Sans", sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 26px;
+    /* 216.667% */
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+    transition: transform 0.4s ease;
+}
+
+.service-grid-item a:hover {
+    transform: scale(1.1);
+    /* Увеличивает элемент на 10% */
+}
+
+.service-grid-item img {
+    margin-bottom: 17px;
+}
+
+.rounded-rectangle {
+    width: 100%;
+    /* Ширина элемента */
+    height: 10px;
+    /* Высота элемента */
+    background-color: #FD695A;
+    /* Цвет заливки */
+    opacity: 0.7;
+    /* Прозрачность элемента */
+    border-radius: 0 0 15px 15px;
+    /* Закругление только нижних углов */
+    filter: drop-shadow(0px 30px 80px rgba(44, 22, 84, 0.07));
+    position: absolute;
+    /* Позиционируем относительно service-grid-item */
+    bottom: 4%;
+}
+
+/* section 2 */
+.section-about-us {
+    display: grid;
+    grid-template-columns: minmax(200px, 1fr) minmax(200px, 1fr);
+    /* Левая и правая половины одинаковой ширины */
+    height: 570px;
+    /* Высота блока */
+    margin-bottom: 152px;
+}
+
+.section-about-us-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Центрируем содержимое по горизонтали */
+    align-items: flex-start;
+    /* Центрируем содержимое по вертикали */
+    margin-left: 160px;
+    padding-top: 2%;
+}
+
+.section-about-us-left h1 {
+    color: #FD695A;
+    font-family: 'Mulish', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 50px;
+    text-transform: uppercase;
+    margin-bottom: 4%;
+}
+
+.section-about-us-left h2 {
+    color: #3D3D3F;
+    font-family: 'Mulish', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 50px;
+    margin-bottom: 40px;
+}
+
+.section-about-us-left p {
+    color: #515151;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 26px;
+    margin-bottom: 32px;
+}
+
+.section-about-us-left a {
+    background-color: #FD695A;
+    border-radius: 50px;
+    padding: 11px 41px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 450;
+    line-height: 28px;
+    letter-spacing: 0.4px;
+    transition: background-color 0.4s ease;
+}
+
+.section-about-us-left a:hover {
+    background-color: #29d053;
+}
+
+.section-about-us-right {
+    display: flex;
+    justify-content: flex-start;
+    /* Центрируем содержимое по горизонтали */
+    align-items: flex-start;
+    /* Центрируем содержимое по вертикали */
+    margin-left: -30px;
+    margin-right: 118px;
+    position: relative;
+    height: 100%;
+}
+
+.section-about-us-right img {
+    position: absolute;
+    bottom: 0;
+    /* Прижимаем изображение к нижнему краю */
+    right: 0;
+    object-fit: cover;
+    /* Гарантирует аккуратное отображение */
+}
+
+/* section 3 */
+
+.section-our-work {
+    display: grid;
+    grid-template-rows: 150px 40px 765px;
+    /*  строки: верхняя, навигация и нижняя */
+    grid-template-columns: 1fr;
+    /* Полная ширина для каждой строки */
+    box-sizing: border-box;
+    /* Учитываем padding в размере */
+    margin-left: 160px;
+    margin-right: 185px;
+    margin-bottom: 159px;
+}
+
+.top-row {
+    grid-row: 1;
+    /* Верхняя строка */
+    text-align: start;
+    /* Центрируем текст */
+    height: 100%;
+}
+
+.nav-row {
+    grid-row: 2;
+    /* Строка для навигации */
+    text-align: start;
+    height: 100%;
+}
+
+.grid-row {
+    grid-row: 3;
+    /* Нижний блок с 6 частями */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 6 равных частей по 3 в строке */
+    grid-template-rows: repeat(2, 1fr);
+    /* 2 строки */
+    gap: 42px;
+    /* Расстояние между элементами */
+    padding-top: 40px;
+}
+
+.grid-item {
+    border-radius: 8px;
+    display: flex;
+    /* Центрируем содержимое внутри блока (опционально) */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.grid-item img {
+    width: 100%;
+    /* Занимает всю ширину родительского блока */
+    height: 100%;
+    /* Занимает всю высоту родительского блока */
+    object-fit: cover;
+}
+
+.top-row h1 {
+    color: #FD695A;
+    font-family: 'Mulish', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 50px;
+    text-transform: uppercase;
+    margin-top: -15px;
+    margin-bottom: 15px;
+}
+
+.top-row h2 {
+    color: #3D3D3F;
+    font-family: 'Mulish', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 50px;
+}
+
+.nav-row {
+    width: 100%;
+    display: flex;
+    /* Делаем элементы строки навигации flex-элементами */
+    justify-content: flex-start;
+    /* Выравнивание элементов по левому краю */
+    align-items: start;
+    /* Выравнивание элементов по вертикали */
+    gap: 66px;
+    /* Расстояние между элементами */
+    padding-left: 0.2%;
+    padding-top: 0.2%;
+    position: relative;
+    flex-wrap: nowrap;
+}
+
+.nav-row a {
+    text-decoration: none;
+    /* Убираем подчеркивание ссылок */
+    color: #CCC;
+    font-variant-numeric: lining-nums proportional-nums;
+    /* Настройка отображения чисел */
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    /* Размер шрифта */
+    font-style: normal;
+    /* Нормальный стиль */
+    font-weight: 700;
+    /* Жирный текст */
+    line-height: 22px;
+}
+
+.nav-row a:first-of-type {
+    margin-right: 0.5%;
+}
+
+.nav-row a:last-of-type {
+    text-decoration: none;
+    /* Убираем подчеркивание ссылок */
+    color: #3D3D3F;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22px;
+    /* 137.5% */
+    padding-left: 9.2%;
+    /* Увеличиваем отступ слева */
+}
+
+.nav-row img {
+    position: absolute;
+    /* Абсолютное позиционирование */
+    right: 0;
+}
+
+.bottom-rectangle {
+    width: 56px;
+    /* Ширина элемента */
+    height: 3px;
+    /* Высота элемента */
+    background-color: #FD695A;
+    /* Цвет заливки */
+    position: absolute;
+    /* Позиционируем относительно service-grid-item */
+    bottom: 0px;
+    left: 0px;
+}
+
+/* section 4 */
+
+.section-testimonial {
+    display: flex;
+    flex-direction: column;
+    /* Располагаем содержимое вертикально */
+    box-sizing: border-box;
+    /* Включаем отступы в общий размер */
+    margin-left: 158px;
+    margin-right: 185px;
+    margin-bottom: 2.9%;
+}
+
+.testimonial-top-row {
+    height: 170px;
+    text-align: start;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    /* Две строки вертикально */
+    gap: 15px;
+    /* Отступ между строками */
+}
+
+.testimonial-top-row h1 {
+    color: #FD695A;
+    font-family: 'Mulish', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 50px;
+    text-transform: uppercase;
+    margin-top: -13px;
+}
+
+.testimonial-top-row h2 {
+    color: #3D3D3F;
+    font-family: 'Mulish', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 50px;
+}
+
+.testimonial-block-row {
+    display: grid;
+    grid-template-columns: 515px 135px 545px;
+    /* Две большие колонки по краям и одна узкая в центре */
+    align-items: center;
+    /* Выравнивание по вертикали */
+    padding-top: 23px;
+}
+
+.testimonial-block-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 496px;
+}
+
+.testimonial-block-people {
+    padding-top: 2%;
+}
+
+.rounded-block-large {
+    left: 0;
+    /* Начинаем с левого края родителя */
+    width: 100%;
+    /* Занимаем всю ширину родительского блока */
+    height: 304px;
+    /* Указанная фиксированная высота */
+    border-radius: 29px;
+    /* Скругленные края */
+    background: #FFF;
+    /* Заданный белый цвет фона */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.customer {
+    position: absolute;
+    /* Абсолютное позиционирование для размещения сверху */
+    top: 10%;
+    /* Прижимаем к верхней границе блока */
+    left: 9%;
+    /* Прижимаем к левому краю */
+    width: auto;
+    /* Занимаем всю ширину родительского блока */
+    height: 90px;
+    display: flex;
+    /* Flexbox для выравнивания содержимого */
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.customer-text {
+    display: flex;
+    /* Используем Flexbox для внутреннего выравнивания */
+    flex-direction: column;
+    /* Размещаем тексты в колонку */
+    justify-content: center;
+    /* Выравнивание текстов по верхнему краю */
+    width: 100%;
+    /* Тексты занимают всю доступную ширину */
+    height: 100%;
+}
+
+.customer-text span {
+    display: column;
+    text-align: left;
+    /* Выравнивание текста по левому краю */
+    margin: 0;
+}
+
+.customer-text span:first-of-type {
+    color: #3D3D3F;
+    font-variant-numeric: lining-nums proportional-nums;
+    /* Форматирование чисел */
+    font-family: "Mulish", sans-serif;
+    /* Шрифт */
+    font-size: 22px;
+    /* Размер текста */
+    font-style: normal;
+    /* Обычный стиль */
+    font-weight: 700;
+    /* Жирный текст */
+    line-height: 26px;
+    padding-bottom: 6%;
+}
+
+.customer-text span:last-of-type {
+    color: #3D3D3F;
+    /* Основной цвет текста */
+    font-variant-numeric: lining-nums proportional-nums;
+    /* Форматирование чисел */
+    font-family: "Mulish", sans-serif;
+    /* Шрифт */
+    font-size: 16px;
+    /* Размер текста */
+    font-style: normal;
+    /* Обычный стиль */
+    font-weight: 400;
+    /* Обычный вес текста */
+    line-height: 26px;
+    /* Высота строки */
+    opacity: 0.6;
+}
+
+.rounded-block-large p {
+    color: #757575;
+    font-variant-numeric: lining-nums proportional-nums;
+    /* Форматирование чисел */
+    font-family: "Mulish", sans-serif;
+    /* Шрифт */
+    font-size: 16px;
+    /* Размер текста */
+    font-style: normal;
+    /* Обычный стиль */
+    font-weight: 600;
+    /* Обычный вес текста */
+    line-height: 25px;
+    /* Высота строки */
+    margin-bottom: -20%;
+}
+
+.testimonial-block-item.narrow {
+    display: flex;
+    flex-direction: column;
+    gap: 29px;
+}
+
+.testimonial-block-item.narrow img {
+    transition: filter 0.3s ease;
+    cursor: pointer;
+}
+
+.testimonial-block-item.narrow img:hover {
+
+    filter: sepia(50%) hue-rotate(90deg) brightness(1.2);
+}
+
+/* section 5*/
+
+.section-have-project {
+    background-color: linear-gradient(106deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.60) 100%);
+    height: 417px;
+    margin-left: 158px;
+    margin-right: 189px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 8.2%;
+}
+
+.section-have-project-space {
+    height: 32.5%;
+    flex-shrink: 0;
+}
+
+.section-have-project-rounded-block {
+    height: 67.5%;
+    width: 100%;
+    /* Занимает всю ширину родительского блока */
+    background: white;
+    box-shadow: 0px 4px 33px rgba(0, 0, 0, 0.03);
+    /* Лёгкая тень */
+    border-radius: 15px;
+    /* Скруглённые края */
+    border: 4px solid white;
+    /* Белая рамка */
+    box-sizing: border-box;
+    padding-left: 55.2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    box-sizing: border-box;
+}
+
+.section-have-project-rounded-block a {
+    background-color: #FD695A;
+    border-radius: 50px;
+    padding: 11px 41px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 450;
+    line-height: 28px;
+    letter-spacing: 0.3px;
+    transition: background-color 0.4s ease;
+}
+
+.section-have-project-rounded-block a:hover {
+    background-color: #29d053;
+}
+
+.section-have-project-rounded-block h2 {
+    color: #3D3D3F;
+    font-family: 'Mulish', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 50px;
+    margin-bottom: 40px;
+}
+
+.section-have-project img {
+    position: absolute;
+    /* Абсолютное позиционирование */
+    left: 1%;
+    /* Прижимаем картинку к правому краю */
+    top: 0;
+    /* Прижимаем к верхней границе секции */
+    height: 100%;
+    /* Картинка занимает всю высоту секции */
+    object-fit: cover;
+}
+
+/* footer */
+
+footer {
+    height: 355px;
+    margin-left: 160px;
+    margin-right: 185px;
+    display: flex;
+    /* Flexbox для выравнивания элементов */
+    flex-direction: column;
+    /* Элементы идут сверху вниз */
+    box-sizing: border-box;
+}
+
+.footer-spacer {
+    width: 100%;
+    /* На всю ширину страницы */
+    height: 1px;
+    /* Тонкая линия */
+    opacity: 0.2;
+    background-color: #757575;
+}
+
+.footer-grid {
+    display: grid;
+    /* Включаем CSS Grid */
+    grid-template-columns: 245px 220px 186px 205px 300px;
+    /* Делим на 5 одинаковых колонок */
+    gap: 5px;
+    /* Отступы между колонками */
+    align-items: center;
+}
+
+.footer-part {
+    height: 313px;
+    text-align: start;
+    color: white;
+    /* Цвет текста */
+    font-family: "Mulish", sans-serif;
+    /* Шрифт */
+    font-size: 16px;
+    /* Размер текста */
+    font-weight: 600;
+    /* Полужирный текст */
+}
+
+.footer-bottom {
+    display: grid;
+    /* Используем CSS Grid для нижней строки */
+    grid-template-columns: 1fr 1fr;
+    /* Делим на 2 части */
+    height: 41px;
+}
+
+.footer-bottom-left {
+    display: flex;
+    justify-content: start;
+    align-items: end;
+    height: 100%;
+}
+
+.footer-bottom-left span,
+.footer-bottom-right a {
+    color: #646464;
+    font-size: 14px;
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    line-height: 14px;
+    text-decoration: none;
+    padding-bottom: 0.2%;
+}
+
+.footer-bottom-right {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    height: 100%;
+    gap: 9.3%;
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    height: 40px;
+    gap: 22px;
+    margin-bottom: 23px;
+}
+
+.footer-logo span {
+    color: #3D3D3F;
+    font-size: 28px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    line-height: 40px;
+    letter-spacing: 0.5px;
+    word-wrap: break-word;
+    margin-top: -3px;
+}
+
+.info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    height: 32px;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.info span {
+    color: #37383D;
+    font-family: "DM Sans", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+    /* 200% */
+
+}
+
+.info img {
+    padding-top: 5px;
+}
+
+.footer-part h2 {
+    color: #3D3D3F;
+    font-size: 16px;
+    font-family: "Mulish", sans-serif;
+    font-weight: 700;
+    line-height: 22px;
+    word-wrap: break-word;
+    margin-bottom: 26px;
+    margin-top: -3px;
+}
+
+.footer-part a {
+    color: #666666;
+    font-size: 16px;
+    font-family: "Mulish", sans-serif;
+    font-weight: 600;
+    line-height: 24px;
+    word-wrap: break-word;
+    text-decoration: none;
+}
+
+.footer-part.media h2 {
+    margin-bottom: 4px;
+}
+
+.footer-part ul {
+    list-style-type: none;
+}
+
+.footer-part ul li a {
+    transition: transform 0.4s ease;
+    display: inline-block;
+}
+
+.footer-part ul li a:hover {
+    transform: scale(1.1);
+    /* Увеличивает элемент на 10% */
+}
+
+.footer-part ul li {
+    margin-bottom: 16px;
+    /* Измените значение по вашему желанию */
+}
+
+.footer-part.join span {
+    color: #666666;
+    font-size: 16px;
+    font-family: "Mulish", sans-serif;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.input-field {
+    border-radius: 8px;
+    /* Скругленные углы */
+    border: 1px solid rgba(178, 178, 178, 0.21);
+    /* Полупрозрачная граница */
+    background: var(--Base-Color-White, #FFF);
+    /* Белый фон с использованием переменной */
+    width: 296px;
+    /* Фиксированная ширина */
+    height: 56px;
+    /* Фиксированная высота */
+    flex-shrink: 0;
+    /* Запрещаем сжиматься при использовании Flexbox */
+    box-sizing: border-box;
+    /* Учитываем границы в общей ширине и высоте */
+    padding-left: 15px;
+    margin-top: 8px;
+    margin-bottom: 40px;
+}
+
+.input-field:not(:placeholder-shown) {
+    border-color: #49c53e;
+    /* Граница меняется, если поле заполнено */
+    background-color: #f3fef4
+        /* Светлый зеленый фон */
+}
+
+.input-field::placeholder {
+    color: #999;
+    /* Цвет текста подсказки */
+    font-family: "Mulish", sans-serif;
+    /* Шрифт подсказки */
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 150%;
+    /* 24px */
+}
+
+.footer-part.join a {
+    background-color: #FD695A;
+    border-radius: 8px;
+    padding: 16px 48px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 450;
+    line-height: 21px;
+    letter-spacing: 0.3px;
+    transition: background-color 0.4s ease;
+}
+
+.footer-part.join a:hover {
+    background-color: #29d053;
+}
+
+/* adapt */
+
+@media (min-width: 768px) and (max-width: 1393px) {
+    body,html {
+        height: auto;
+        overflow-x: hidden;
+        width: 765px;
+        margin: 0 auto;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .thumb {
+        max-height: 100%;
+        /* Делаем блок гибким */
+        margin: 0 auto auto auto;
+        /* Убираем лишние отступы */
+        width: 100%;
+        /* Адаптируем ширину для планшетов */
+    }
+
+    .content {
+        width: 100%;
+        /* Растягиваем на всю ширину контейнера */
+        height: auto;
+        /* Убираем фиксированную высоту */
+        top: 0;
+        /* Сбрасываем позиционирование */
+        left: 0;
+        margin: 0 auto;
+        /* Центрируем контент */
+    }
+
+    .header {
+        display: flex;
+        /* Используем Flexbox */
+        justify-content: space-between;
+        /* Логотип слева, кнопка справа */
+        align-items: center;
+        margin-top: 1.5%;
+        padding: 10px 10px;
+        /* Уменьшаем отступы */
+        margin-bottom: 7%;
+    }
+
+    .logo {
+        position: relative;
+        top: auto;
+        left: 1%;
+        width: auto;
+        /* Делаем логотип гибким */
+        margin-right: auto;
+        /* Центрируем логотип */
+        display: flex;
+        /* Выравниваем текст и картинку */
+        align-items: center;
+        /* Логотип и текст на одной линии */
+    }
+
+    .logo img {
+        width: 30px;
+        /* Уменьшаем размер логотипа */
+        height: 30px;
+    }
+
+    .logo-text {
+        font-size: 26px;
+        /* Уменьшаем размер текста */
+        line-height: 24px;
+        top: 15%;
+    }
+
+    .nav {
+        margin: 0;
+        display: flex;
+        /* Центрируем содержимое кнопки */
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+    }
+
+    .nav a {
+        display: none;
+        /* Скрываем навигацию на планшете (если она мешает) */
+    }
+
+    .contact-us {
+        margin: 0;
+        padding: 0;
+    }
+
+    .contact-us a {
+        display: inline-block;
+        font-size: 14px;
+        /* Уменьшаем размер шрифта */
+        padding: 9px 20px;
+        /* Уменьшаем внутренние отступы */
+        margin: 0;
+    }
+
+    .title {
+        width: 90%;
+        /* Уменьшаем ширину и делаем её гибкой */
+        height: auto;
+        /* Автоматическая высота для контента */
+        position: relative;
+        /* Сбрасываем точное позиционирование */
+        left: 0;
+        /* Убираем фиксированный отступ слева */
+        top: 80px;
+        /* Уменьшаем отступ сверху */
+        margin: 0 0;
+        /* Центрируем по горизонтали */
+        margin-bottom: 15%;
+    }
+
+    .title-text {
+        width: 100%;
+        /* Растягиваем текст на ширину контейнера */
+        position: static;
+        /* Убираем абсолютное позиционирование */
+        margin: 0;
+        /* Убираем отступы */
+        padding: 0 15px;
+        /* Добавляем боковые отступы */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        /* Выравниваем текст по левому краю */
+    }
+
+    .title-best-marketing,
+    .title-digital-agency {
+        font-size: 36px;
+        /* Уменьшаем размер текста */
+        line-height: 32px;
+        /* Корректируем межстрочный интервал */
+        letter-spacing: 1px;
+        /* Сокращаем расстояние между буквами */
+        position: relative;
+    }
+
+    .title-best-marketing .title-marketing {
+        color: #FD695A;
+        /* Сохраняем цвет "Marketing" */
+    }
+
+    .title-text p {
+        font-size: 16px;
+        /* Уменьшаем размер текста параграфа */
+        line-height: 24px;
+        /* Делаем текст более компактным */
+        padding-top: 6%;
+        /* Уменьшаем отступ сверху */
+        color: #3D3D3F;
+        /* Остаётся читаемым */
+    }
+
+    .title-decoration {
+        width: 90%;
+        /* Сокращаем размер декоративного элемента */
+        height: auto;
+        /* Пропорционально сохраняем высоту */
+       left: -15.7%;
+        top: -40%;
+        /* Уменьшаем отступ сверху */
+        margin: 0 0;
+        /* Центрируем декоративный элемент */
+    }
+
+    .title-decoration img {
+        transform: scale(0.339);
+    }
+
+    .happy-girl img {
+        position: absolute;
+        /* Оставляем относительное позиционирование */
+        left: 50%;
+        top: -27%;
+        width: 80%;
+        /* Уменьшаем масштаб изображения */
+        max-width: 60%;
+        /* Ограничиваем максимальную ширину */
+        height: auto;
+        display: flex;
+        align-items: end;
+    }
+
+    .main-button {
+        display: flex;
+        /* Flexbox для горизонтального размещения */
+        height: auto;
+        flex-direction: row;
+        /* Все элементы располагаются в строку */
+        align-items: center;
+        /* Выравнивание по вертикали */
+        justify-content: center;
+        margin: 0 auto;
+        /* Центрируем блок */
+        padding: 0;
+        /* Внутренний отступ для корректности */
+        width: auto;
+        gap: 3%;
+    }
+
+    .get-started {
+        background-color: #FD695A;
+        border-radius: 50px;
+        /* Закругление углов */
+        padding: 12px 27px;
+        /* Внутренние отступы */
+        text-align: center;
+        text-decoration: none;
+        color: white;
+        font-size: 16px;
+        /* Размер текста */
+        font-family: 'CustomMulish', sans-serif;
+        font-weight: 500;
+        line-height: 28px;
+        letter-spacing: 0.52px;
+        flex-shrink: 0;
+    }
+
+    .main-button img {
+        margin: 0;
+        /* Сбрасываем лишние отступы */
+        padding: 0;
+        cursor: pointer;
+        margin-left: -5%;
+    }
+
+    .main-button a:last-of-type {
+        padding: 0;
+        text-decoration: none;
+        color: #FD695A;
+        font-size: 16px;
+        /* Уменьшенный размер текста */
+        font-family: 'CustomMulish', sans-serif;
+        font-weight: 400;
+        line-height: 28px;
+        margin: 0;
+        /* Убираем отрицательные отступы */
+        letter-spacing: 0.5px;
+        margin-left: -21%;
+    }
+
+    .agency {
+        margin: 0 auto;
+        /* Центрируем блок */
+        padding: 3%;
+        /* Увеличиваем внутренние отступы для комфорта */
+        background: linear-gradient(65.25deg, rgba(255, 255, 255, 0.7) -1.59%, rgba(255, 255, 255, 0.6) 99.42%);
+        margin-bottom: 50px;
+        /* Уменьшаем нижний отступ */
+    }
+
+    .clients {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        /* Располагаем элементы вертикально */
+        justify-content: center;
+        /* Выравниваем горизонтально */
+        align-items: center;
+        /* Центрируем элементы по вертикали */
+        margin: 0;
+        /* Сбрасываем все внешние отступы */
+        flex-wrap: wrap;
+        /* Разрешаем перенос элементов */
+        padding: 20px;
+        /* Внутренние отступы для удобства */
+    }
+
+    .clients span {
+        width: 100%;
+        /* Текст занимает всю ширину */
+        color: #3D3D3F;
+        font-size: 16px;
+        /* Уменьшаем шрифт для планшетов */
+        font-weight: 700;
+        text-align: center;
+        /* Центрируем текст */
+        margin-bottom: 5%;
+        /* Уменьшаем отступ снизу */
+    }
+
+    .clients img {
+        max-width: 90%;
+        /* Ограничиваем ширину логотипов */
+        margin: 10px 0;
+        /* Добавляем отступы сверху и снизу */
+        height: auto;
+        /* Сохраняем пропорции изображений */
+    }
+
+    .section-service {
+        display: flex;
+        /* Меняем на flexbox для гибкости */
+        flex-direction: column;
+        /* Располагаем элементы вертикально */
+        align-items: center;
+        /* Центрируем содержимое по горизонтали */
+        height: auto;
+        /* Убираем фиксированную высоту */
+        margin-bottom: 80px;
+        /* Уменьшаем нижний отступ */
+        padding: 20px;
+        /* Внутренние отступы для удобства */
+    }
+
+    .section-service-left {
+        display: flex;
+        /* Flexbox для выравнивания содержимого */
+        flex-direction: column;
+        /* Все элементы располагаются вертикально */
+        justify-content: center;
+        /* Центрируем содержимое по вертикали */
+        align-items: center;
+        /* Центрируем содержимое по горизонтали */
+        margin: 0;
+        /* Убираем лишние отступы */
+        width: 100%;
+        /* Полная ширина для адаптации */
+        padding: 0 15px;
+        /* Добавляем боковые отступы */
+        text-align: center;
+        /* Центрируем текст */
+    }
+
+    .h2-container {
+        display: flex;
+        /* Flexbox для горизонтального выравнивания */
+        flex-direction: row;
+        /* Заголовок и картинка в строку */
+        justify-content: center;
+        /* Центрируем содержимое */
+        align-items: center;
+        /* Центрируем элементы вертикально */
+        text-align: left;
+        /* Текст остаётся выровненным по левому краю */
+    }
+
+    .h2-container img {
+        margin-left: -18%;
+        /* Отступ между заголовком и картинкой */
+        margin-bottom: 0;
+        /* Сбрасываем лишние отступы */
+        width: auto;
+        /* Пропорциональные размеры */
+        height: auto;
+        max-width: 50%;
+        /* Ограничиваем ширину картинки */
+    }
+
+    .section-service-right {
+        display: grid;
+        /* Используем Grid для сетки */
+        grid-template-columns: repeat(2, 1fr);
+        /* Две колонки */
+        gap: 2%;
+        /* Промежутки между элементами */
+        margin: 20px auto;
+        /* Центрируем блок */
+        width: 100%;
+        /* Полная ширина для адаптации */
+    }
+
+    .service-grid-item {
+        background-color: #FFFFFF;
+        /* Белый фон */
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        /* Контент располагается вертикально */
+        justify-content: center;
+        /* Центрируем содержимое по горизонтали */
+        align-items: center;
+        padding: 15px;
+        /* Добавляем внутренние отступы */
+        margin: 0 8%;
+        /* Убираем внешние отступы */
+    }
+
+    .service-grid-item img {
+        margin-bottom: 4%;
+        /* Уменьшаем отступ снизу */
+    }
+
+    .section-service-left h1,
+    .section-service-left p,
+    .section-service-left a {
+        text-align: center;
+        /* Центрируем все элементы */
+    }
+
+    .section-service-left h2 {
+        font-size: 32px;
+    }
+
+    .section-service-left p {
+        font-size: 14px;
+    }
+
+    .rounded-rectangle {
+        margin-bottom: -3%;
+    }
+
+    .section-about-us {
+        grid-template-columns: 1fr;
+        /* Сетка будет в одну колонку */
+        height: auto;
+        /* Высота секции адаптируется автоматически */
+    }
+
+    .section-about-us-left {
+        margin-left: 20px;
+        /* Уменьшаем отступы */
+        align-items: center;
+        /* Центрируем содержимое */
+        text-align: center;
+        /* Выравниваем текст по центру */
+        margin-bottom: 2%;
+    }
+
+    .section-about-us-left h1 {
+        margin-bottom: -0.5%;
+    }
+
+    .section-about-us-left h2 {
+        font-size: 32px;
+        /* Уменьшаем размер заголовка */
+    }
+
+    .section-about-us-left p {
+        font-size: 14px;
+        /* Уменьшаем шрифт текста */
+    }
+
+    .section-about-us-left a {
+        font-size: 14px;
+        /* Уменьшаем размер шрифта ссылки */
+        padding: 8px 30px;
+        /* Адаптируем размер кнопки */
+    }
+
+    .section-about-us-right {
+        margin-left: 0;
+        margin-right: 0;
+        justify-content: center;
+        /* Центрируем изображение */
+    }
+
+    .section-about-us-right img {
+        margin-top:0;
+        width: 60%;
+        /* Уменьшаем размер изображения */
+        height: auto;
+        /* Сохраняем пропорции */
+        position: static;
+        /* Сбрасываем абсолютное позиционирование */
+    }
+
+    .section-our-work {
+        margin: 0 8%;
+        margin-bottom: 8%;
+        padding-bottom: 10%;
+        grid-template-rows: auto;
+        /* Позволяем высоте адаптироваться */
+    }
+
+    .top-row {
+        text-align: center;
+        /* Центрируем текст */
+    }
+
+    .top-row h1 {
+        margin-bottom: -0.5%;
+    }
+
+    .top-row h2 {
+        font-size: 32px;
+        /* Уменьшаем размер шрифта */
+    }
+
+    .nav-row {
+        flex-wrap: wrap;
+        /* Разрешаем перенос элементов */
+        gap: 16px;
+        /* Уменьшаем расстояние между элементами */
+        justify-content: center;
+        /* Центрируем элементы */
+    }
+
+    .grid-row {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 блока в строке */
+        grid-template-rows: repeat(3, 1fr);
+        /* 3 строки */
+        gap: 20px;
+        /* Уменьшаем расстояние между блоками */
+        padding-top: 20px;
+        /* Сокращаем верхний отступ */
+    }
+
+    .grid-item img {
+        border-radius: 8px;
+        /* Остаётся неизменным */
+        width: 100%;
+        /* Занимает всю ширину блока */
+        height: auto;
+        /* Автоматическая высота для пропорций */
+        object-fit: cover;
+        /* Сохраняем аккуратное отображение */
+    }
+
+    .nav-row a {
+        font-size: 14px;
+        /* Уменьшаем размер шрифта */
+    }
+
+    .nav-row a:last-of-type {
+        display: none;
+    }
+
+    .nav-row img {
+        display: none;
+    }
+
+    .bottom-rectangle {
+        display: none;
+    }
+
+    .section-testimonial {
+        margin-left: 20px;
+        /* Уменьшаем отступы */
+        margin-right: 20px;
+        /* Уменьшаем отступы */
+        margin-bottom: 8%;
+        /* Корректируем нижний отступ */
+    }
+
+    .testimonial-top-row {
+        text-align: center;
+        /* Центрируем текст */
+        gap: 10px;
+        /* Уменьшаем расстояние между строками */
+    }
+
+    .testimonial-top-row h1 {
+        margin-bottom: -2%;
+    }
+
+    .testimonial-top-row h2 {
+        font-size: 32px;
+        /* Уменьшаем размер подзаголовка */
+    }
+
+    .testimonial-block-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        /* Размещение всех блоков по одной колонке */
+        gap: 20px;
+        /* Пространство между строками */
+        margin-top: -5%;
+        /* Корректируем верхний отступ */
+        padding-top: 0;
+    }
+
+    .testimonial-block-item {
+        height: auto;
+        /* Динамическая высота для адаптации контента */
+    }
+
+    .rounded-block-large {
+        height: auto;
+        /* Адаптивная высота */
+        box-sizing: border-box;
+        padding: 20px;
+        /* Добавляем внутренние отступы */
+        margin-left: 12%;
+        border-radius: 15px;
+        /* Корректируем скругление углов */
+    }
+
+    .rounded-block-large p {
+        font-size: 14px;
+        /* Уменьшаем шрифт текста */
+        line-height: 22px;
+        /* Высота строки */
+        margin-bottom: 0;
+        margin-top: 15%;
+    }
+
+    .customer-text span:first-of-type {
+        font-size: 18px;
+        /* Уменьшаем размер имени */
+    }
+
+    .customer-text span:last-of-type {
+        font-size: 14px;
+        /* Уменьшаем размер описания */
+        margin-top: -2%;
+    }
+
+    .testimonial-block-people {
+        width: 80%;
+        /* Уменьшаем размер изображения */
+        height: auto;
+        /* Сохраняем пропорции */
+    }
+
+    .testimonial-block-item.narrow {
+        display: flex;
+        /* Меняем направление флекс-контейнера на строку */
+        flex-direction: row;
+        /* Располагаем изображения горизонтально */
+        gap: 10px;
+        /* Добавляем промежуток между изображениями */
+        justify-content: center;
+        /* Центрируем изображения внутри блока */
+        align-items: center;
+        /* Выравниваем изображения по вертикали */
+    }
+
+    .testimonial-block-item.narrow img {
+        width: 40px;
+        /* Уменьшаем размер кнопок */
+        height: 40px;
+        transform: rotate(90deg);
+    }
+
+    .testimonial-block-item.large {
+        width: 100%;
+        /* Занимает всю доступную ширину */
+        height: auto;
+        /* Автоматическая высота */
+        overflow: visible;
+        /* Обеспечивает видимость всего содержимого */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .testimonial-block-people {
+        width: 60%;
+        /* Уменьшаем размер изображения */
+        height: auto;
+    }
+
+    .section-have-project {
+        height: auto;
+        /* Автоматическая высота для адаптации содержимого */
+        margin: 0 auto;
+        /* Убираем боковые отступы */
+        padding: 20px;
+        /* Добавляем внутренние отступы */
+        display: flex;
+        flex-direction: column;
+        /* Элементы располагаются вертикально */
+        align-items: center;
+        /* Центрируем содержимое по горизонтали */
+        margin-bottom: 8%;
+    }
+
+    .section-have-project-space {
+        display: none;
+        /* Убираем пустое пространство для упрощения */
+    }
+
+    .section-have-project-rounded-block {
+        height: auto;
+        /* Автоматическая высота для блока */
+        width: 100%;
+        /* Занимает всю ширину контейнера */
+        padding: 20px;
+        /* Внутренние отступы */
+        display: flex;
+        flex-direction: column;
+        /* Элементы располагаются вертикально */
+        align-items: center;
+        /* Центрируем текст и кнопку */
+        text-align: center;
+        /* Центрируем текст */
+    }
+
+    .section-have-project-rounded-block h2 {
+        font-size: 32px;
+        /* Уменьшаем размер текста */
+        line-height: 36px;
+        /* Уменьшаем межстрочный интервал */
+        margin-bottom: 4%;
+        /* Уменьшаем отступ снизу */
+    }
+
+    .section-have-project-rounded-block a {
+        padding: 10px 30px;
+        /* Оптимизируем внутренние отступы кнопки */
+        font-size: 14px;
+        /* Уменьшаем размер текста */
+    }
+
+    .section-have-project img {
+        position: static;
+        /* Изображение располагается в потоке документа */
+        width: 60%;
+        /* Ограничиваем ширину изображения */
+        height: auto;
+        /* Сохраняем пропорции */
+        margin: 0;
+    }
+
+    footer {
+        margin: 0;
+        max-width: 768px;
+        height: auto;
+    }
+
+    .footer-grid {
+        display: grid;
+        /* Используем CSS Grid */
+        grid-template-rows: auto auto;
+        /* Две строки */
+        gap: 1%;
+        /* Расстояние между блоками */
+        width: 100%;
+        /* Полная ширина */
+        margin-bottom: 1%;
+    }
+
+    .footer-part.logo-down,
+    .footer-part.join {
+        grid-row: 1 / 2;
+        justify-self: start;
+        /* Центрируем блоки по горизонтали */
+        align-self: center;
+        /* Центрируем блоки по вертикали */
+        text-align: left;
+        /* Выравниваем содержимое блоков по левому краю */
+        height: 200px;
+        margin: 0;
+        margin-bottom: 4%;
+    }
+
+    .footer-grid> :nth-child(1),
+    /* Левый блок на первой строке */
+    .footer-grid> :nth-child(5) {
+        /* Правый блок на первой строке */
+        margin-left: 70%;
+        /* Сдвигаем оба блока вправо */
+    }
+
+    .footer-part.service,
+    .footer-part.company,
+    .footer-part.media {
+        grid-row: 2 / 3;
+        /* Располагаем блоки на второй строке */
+        grid-column: auto;
+        /* Автоматическое распределение по столбцам */
+        width: 100%;
+        /* Каждый блок занимает всю возможную ширину */
+        flex-grow: 1;
+        margin: 0 1%;
+        height: 265px;
+        padding-left: 50%;
+    }
+
+    .footer-part {
+        text-align: left;
+        /* Элементы внутри остаются выровненными по левому краю */
+    }
+
+    .footer-part.logo-down img {
+        max-width: 25%;
+        /* Устанавливаем максимальную ширину для всех изображений */
+        height: auto;
+        /* Сохраняем пропорции */
+    }
+
+    .info img {
+        width: 12%;
+        /* Устанавливаем ширину для всех изображений */
+        height: auto;
+        margin-top: -3%;
+    }
+
+    .footer-part {
+        font-size: 14px;
+        /* Уменьшаем общий размер текста */
+        line-height: 20px;
+        /* Регулируем межстрочный интервал */
+    }
+
+    .footer-part h2 {
+        font-size: 14px;
+        /* Уменьшаем размер заголовков */
+        line-height: 18px;
+    }
+
+    .footer-part a {
+        font-size: 14px;
+        /* Уменьшаем размер ссылок */
+        line-height: 20px;
+    }
+
+    .info span {
+        font-size: 14px;
+        /* Уменьшаем текст в блоках информации */
+        line-height: 20px;
+    }
+
+    .footer-logo span {
+        margin-left: -4%;
+        padding-top: 3%;
+        font-size: 20px;
+        /* Уменьшаем текст логотипа */
+        line-height: 28px;
+    }
+
+    .footer-bottom-left span,
+    .footer-bottom-right a {
+        font-size: 12px;
+        /* Уменьшаем текст нижней строки */
+        line-height: 16px;
+    }
+
+    .footer-bottom {
+        margin-top: -1%;
+    }
+
+    .footer-part.join span {
+        font-size: 14px;
+        /* Уменьшаем текст подписки */
+        line-height: 20px;
+    }
+
+    .footer-part.join a {
+        font-size: 12px;
+        /* Уменьшаем текст кнопки подписки */
+        padding: 12px 24px;
+        /* Уменьшаем внутренние отступы кнопки */
+    }
+
+    .input-field {
+        font-size: 14px;
+        /* Уменьшаем текст подсказки в поле */
+        padding-left: 10px;
+        /* Уменьшаем внутренний отступ */
+        height: 48px;
+        /* Уменьшаем высоту поля */
+    }
+}
+@media (min-width: 320px) and (max-width: 767px) {
+    body, html {
+        margin: 0 auto;
+    padding: 0;
+    overflow-x: hidden;
+        height: auto;
+        /* Убираем горизонтальный скролл */
+        width: 320px;
+        /* Используем 100% вместо 100vw */
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        /* Контролируем размеры элементов */
+    }
+
+    .thumb {
+        max-height: 100%;
+        /* Делаем блок гибким */
+        margin: 0;
+        /* Убираем лишние отступы */
+        width: 100%;
+        /* Адаптируем ширину для планшетов */
+    }
+
+    .content {
+        width: 100%;
+        /* Растягиваем на всю ширину контейнера */
+        height: auto;
+        /* Убираем фиксированную высоту */
+        top: 0;
+        /* Сбрасываем позиционирование */
+        left: 0;
+        margin: 0 auto;
+        /* Центрируем контент */
+    }
+
+    .header {
+        display: flex;
+        /* Используем Flexbox */
+        justify-content: space-between;
+        /* Логотип слева, кнопка справа */
+        align-items: center;
+        margin-top: 1.5%;
+        padding: 5px 5px;
+        /* Уменьшаем отступы */
+        margin-bottom: 7%;
+    }
+
+    .logo {
+        position: relative;
+        /* Убираем фиксированное позиционирование */
+        top: auto;
+        left: 1%;
+        width: auto;
+        /* Делаем логотип гибким */
+        margin-right: auto;
+        /* Центрируем логотип */
+        display: flex;
+        /* Выравниваем текст и картинку */
+        align-items: center;
+        /* Логотип и текст на одной линии */
+    }
+
+    .logo img {
+        width: 20px;
+        /* Уменьшаем размер логотипа */
+        height: 20px;
+    }
+
+    .logo-text {
+        font-size: 20px;
+        /* Уменьшаем размер текста */
+        line-height: 22px;
+        margin-top: -8%;
+        margin-left: 16%;
+        /* Добавляем отступ между картинкой и текстом */
+        position: static;
+    }
+
+    .nav {
+        margin-left: -98%;
+        /* Сдвигаем кнопку вправо */
+        top: 2.3%;
+        display: flex;
+        /* Центрируем содержимое кнопки */
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+    }
+
+    .nav a {
+        display: none;
+        /* Скрываем навигацию на планшете (если она мешает) */
+    }
+
+    .contact-us {
+        margin: 0;
+        /* Сбрасываем лишние отступы */
+        margin-left: auto;
+        /* Сдвигаем кнопку вправо */
+        padding: 0;
+        /* Убираем внутренние отступы */
+    }
+
+    .contact-us a {
+        display: inline-block;
+        font-size: 12px;
+        /* Уменьшаем размер шрифта */
+        padding: 5px 15px;
+        /* Уменьшаем внутренние отступы */
+        margin: 0;
+    }
+
+    .title {
+        width: 100%;
+        /* Используем полную ширину */
+        position: relative;
+        top: 20px;
+        /* Уменьшаем вертикальный отступ */
+        margin: 0 auto auto auto;
+        margin-left: -53%;
+        /* Центрируем */
+        margin-bottom: 1%;
+        height: auto;
+    }
+
+    .title-text {
+        width: 100%;
+        /* Растягиваем текст на ширину контейнера */
+        position: static;
+        /* Убираем абсолютное позиционирование */
+        margin: 0;
+        /* Убираем отступы */
+        padding: 0 15px;
+        /* Добавляем боковые отступы */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Выравниваем текст по левому краю */
+    }
+
+    .title-best-marketing,
+    .title-digital-agency {
+        font-size: 36px;
+        /* Уменьшаем размер текста */
+        line-height: 24px;
+        /* Корректируем межстрочный интервал */
+        letter-spacing: 0.5px;
+        /* Сокращаем расстояние между буквами */
+        position: relative;
+    }
+
+    .title-best-marketing .title-marketing {
+        color: #FD695A;
+        /* Сохраняем цвет "Marketing" */
+    }
+
+    .title-text p {
+        font-size: 14px;
+        /* Уменьшаем размер текста параграфа */
+        line-height: 20px;
+        /* Делаем текст более компактным */
+        padding-top: 7%;
+        /* Уменьшаем отступ сверху */
+        text-align: center;
+        margin-bottom: 7%;
+    }
+
+    .title-decoration {
+        width: 80%;
+        /* Сокращаем размер декоративного элемента */
+        height: auto;
+        /* Пропорционально сохраняем высоту */
+        left: 25%;
+        top: -5%;
+        /* Уменьшаем отступ сверху */
+        margin: 0 0;
+        /* Центрируем декоративный элемент */
+    }
+
+    .title-decoration img {
+        transform: scale(0.77);
+    }
+
+    .happy-girl img {
+        position: static;
+        width: 80%;
+        /* Уменьшаем масштаб изображения */
+        max-width: 100%;
+        /* Ограничиваем максимальную ширину */
+        height: auto;
+        display: flex;
+        justify-self: center;
+    }
+
+    .main-button {
+        display: flex;
+        /* Flexbox для горизонтального размещения */
+        height: auto;
+        flex-direction: row;
+        /* Все элементы располагаются в строку */
+        align-items: center;
+        /* Выравнивание по вертикали */
+        justify-content: center;
+        margin: 0 auto;
+        /* Центрируем блок */
+        padding: 0;
+        /* Внутренний отступ для корректности */
+        width: auto;
+        gap: 1%;
+        margin-bottom: -5%;
+    }
+
+    .get-started {
+        background-color: #FD695A;
+        border-radius: 50px;
+        /* Закругление углов */
+        padding: 10px 20px;
+        margin: 0;
+        /* Внутренние отступы */
+        text-align: center;
+        text-decoration: none;
+        color: white;
+        font-size: 14px;
+        /* Размер текста */
+        font-family: 'CustomMulish', sans-serif;
+        font-weight: 500;
+        line-height: 20px;
+        letter-spacing: 0.52px;
+        flex-shrink: 0;
+    }
+
+    .main-button img {
+        margin: 0;
+        /* Сбрасываем лишние отступы */
+        padding: 0;
+        cursor: pointer;
+        margin-left: -10%;
+        margin-top: -3%;
+        transform: scale(0.8);
+    }
+
+    .main-button a:last-of-type {
+        padding: 0;
+        text-decoration: none;
+        color: #FD695A;
+        font-size: 14px;
+        /* Уменьшенный размер текста */
+        font-family: 'CustomMulish', sans-serif;
+        font-weight: 400;
+        line-height: 20px;
+        margin: 0;
+        /* Убираем отрицательные отступы */
+        letter-spacing: 0.5px;
+        margin-left: -50%;
+    }
+
+    .agency {
+        margin: 0 auto;
+        /* Центрируем блок */
+        padding: 3%;
+        /* Увеличиваем внутренние отступы для комфорта */
+        background: linear-gradient(65.25deg, rgba(255, 255, 255, 0.7) -1.59%, rgba(255, 255, 255, 0.6) 99.42%);
+        margin-bottom: 5%;
+        /* Уменьшаем нижний отступ */
+    }
+
+    .clients {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        /* Располагаем элементы вертикально */
+        justify-content: center;
+        /* Выравниваем горизонтально */
+        align-items: center;
+        /* Центрируем элементы по вертикали */
+        margin: 0;
+        /* Сбрасываем все внешние отступы */
+        flex-wrap: wrap;
+        /* Разрешаем перенос элементов */
+        padding: 10px;
+        /* Внутренние отступы для удобства */
+    }
+
+    .clients span {
+        width: 100%;
+        /* Текст занимает всю ширину */
+        color: #3D3D3F;
+        font-size: 14px;
+        /* Уменьшаем шрифт для планшетов */
+        font-weight: 700;
+        text-align: center;
+        /* Центрируем текст */
+        margin-bottom: 5%;
+        /* Уменьшаем отступ снизу */
+    }
+
+    .clients img {
+        max-width: 85%;
+        /* Ограничиваем ширину логотипов */
+        margin: 5px 0;
+        /* Добавляем отступы сверху и снизу */
+        height: auto;
+        /* Сохраняем пропорции изображений */
+    }
+
+    .section-service {
+        display: flex;
+        /* Меняем на flexbox для гибкости */
+        flex-direction: column;
+        /* Располагаем элементы вертикально */
+        align-items: center;
+        /* Центрируем содержимое по горизонтали */
+        height: auto;
+        /* Убираем фиксированную высоту */
+        margin-bottom: 5%;
+        /* Уменьшаем нижний отступ */
+        padding: 20px;
+        /* Внутренние отступы для удобства */
+    }
+
+    .section-service-left {
+        display: flex;
+        /* Flexbox для выравнивания содержимого */
+        flex-direction: column;
+        /* Все элементы располагаются вертикально */
+        justify-content: center;
+        /* Центрируем содержимое по вертикали */
+        align-items: center;
+        /* Центрируем содержимое по горизонтали */
+        margin: 0;
+        /* Убираем лишние отступы */
+        width: 100%;
+        /* Полная ширина для адаптации */
+        padding: 0 15px;
+        /* Добавляем боковые отступы */
+        text-align: center;
+        /* Центрируем текст */
+    }
+
+    .h2-container {
+        display: flex;
+        /* Flexbox для горизонтального выравнивания */
+        flex-direction: row;
+        /* Заголовок и картинка в строку */
+        justify-content: center;
+        /* Центрируем содержимое */
+        align-items: center;
+        /* Центрируем элементы вертикально */
+        text-align: left;
+        /* Текст остаётся выровненным по левому краю */
+    }
+
+    .h2-container img {
+        display: none;
+    }
+
+    .section-service-left h1,
+    .section-service-left p,
+    .section-service-left a {
+        text-align: center;
+        /* Центрируем все элементы */
+    }
+
+    .section-service-left h1 {
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    .section-service-left a {
+        font-size: 14px;
+        line-height: 20px;
+        padding: 9px 16px;
+    }
+
+    .section-service-left p {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .section-service-right {
+        display: grid;
+        /* Используем Grid для сетки */
+        grid-template-columns: repeat(2, 1fr);
+        /* Две колонки */
+        gap: 1%;
+        /* Промежутки между элементами */
+        margin: 20px auto;
+        /* Центрируем блок */
+        width: 100%;
+        /* Полная ширина для адаптации */
+    }
+
+    .service-grid-item {
+        height: auto;
+        background-color: #FFFFFF;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Выравниваем содержимое по верхнему краю */
+    align-items: center; /* Выравниваем по горизонтали */
+    padding: 20px; /* Добавляем внутренние отступы */
+    margin: 0 auto;
+    }
+    .service-grid-item > * {
+        margin-top: 1px; /* Задаем одинаковый отступ сверху для всех дочерних элементов */
+    }
+
+    .service-grid-item img {
+        transform: scale(0.77);
+        margin-bottom: 5%;
+    }
+
+    .section-service-left h1,
+    .section-service-left p,
+    .section-service-left a {
+        text-align: center;
+        /* Центрируем все элементы */
+    }
+
+    .section-service-left h2 {
+        white-space: nowrap;
+        font-size: 24px;
+        line-height: 32px;
+        text-align: center;
+        margin-bottom: 8%;
+    }
+
+    .section-service-left p {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .rounded-rectangle {
+        margin-bottom: -5%;
+    }
+    .service-grid-item h1,
+    .service-grid-item p,
+    .service-grid-item a {
+        text-align: center;
+        /* Центрируем все элементы */
+    }
+    .service-grid-item h1 {
+        font-size: 16px; /* Уменьшаем размер текста заголовка */
+        line-height: 22px; /* Корректируем межстрочный интервал */
+        margin-bottom: 8px; /* Сокращаем нижний отступ */
+    }
+
+    .service-grid-item p {
+        font-size: 10px; /* Уменьшаем размер текста описания */
+        line-height: 18px; /* Делаем текст компактнее */
+        margin-bottom: 6px; /* Уменьшаем отступ снизу */
+        margin-right: 0; /* Убираем боковой отступ */
+    }
+
+    .service-grid-item a {
+        font-size: 11px; /* Уменьшаем текст ссылки */
+        line-height: 18px; /* Настраиваем интервал */
+        text-decoration-thickness: 1px; /* Регулируем толщину подчёркивания */
+        text-underline-offset: 2px; /* Корректируем отступ подчёркивания */
+    }
+    .section-about-us {
+        grid-template-columns: 1fr; /* Одноколоночная сетка остаётся */
+        height: auto; /* Адаптация высоты */
+    }
+
+    .section-about-us-left {
+        margin-left: 10px; /* Уменьшаем боковые отступы */
+        margin-right: 10px; /* Добавляем симметрию */
+        align-items: center; /* Выравниваем текст по левому краю */
+        text-align: center; /* Сбрасываем центрирование для узкого экрана */
+        margin-bottom: 5%; /* Увеличиваем отступ для воздуха */
+    }
+
+    .section-about-us-left h1 {
+        font-size: 18px;
+        line-height: 30px;
+        margin-bottom: 3%;
+    }
+
+    .section-about-us-left h2 {
+        font-size: 24px;
+        line-height: 28px;
+        text-align: center;
+        margin-bottom: 8%;
+    }
+
+    .section-about-us-left p {
+        font-size: 12px; /* Компактный шрифт для текста */
+        line-height: 18px; /* Уменьшаем межстрочный интервал */
+        margin-bottom: 8%; /* Добавляем равномерный отступ */
+    }
+
+    .section-about-us-left a {
+        font-size: 12px; /* Уменьшаем размер кнопки */
+        padding: 6px 20px; /* Сокращаем внутренние отступы */
+    }
+
+    .section-about-us-right {
+        margin: 0 auto; /* Центрируем содержимое */
+        justify-content: center;
+    }
+
+    .section-about-us-right img {
+        width: 80%; /* Увеличиваем размер для мобильных устройств */
+        max-width: 100%; /* Ограничиваем ширину */
+        height: auto; /* Сохраняем пропорции */
+    }
+    .section-our-work {
+        padding: 0;
+        margin: 0;
+        margin-top: -15%;
+        /* Уменьшаем боковые отступы */
+        margin-bottom: 19%;
+        /* Добавляем нижний отступ */
+        padding-bottom: 8%; /* Компактный отступ снизу */
+        grid-template-rows: auto; /* Высота секции адаптируется автоматически */
+    }
+
+    .top-row {
+        text-align: center;
+        /* Центрируем текст */
+    }
+
+    .top-row h1 {
+        margin-bottom: 3%;
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    .top-row h2 {
+        font-size: 24px; /* Уменьшаем заголовок */
+        line-height: 28px;
+        margin-bottom: 5%;
+    }
+
+    .nav-row {
+        flex-wrap: wrap;
+        /* Разрешаем перенос элементов */
+        gap: 6px;
+        /* Уменьшаем расстояние между элементами */
+        justify-content: center;
+        /* Центрируем элементы */
+    }
+
+    .grid-row {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 блока в строке */
+        grid-template-rows: repeat(3, 1fr);
+        /* 3 строки */
+        gap: 12px;
+        /* Уменьшаем расстояние между блоками */
+        margin-top: 1%;
+        /* Сокращаем верхний отступ */
+    }
+
+    .grid-item img {
+        border-radius: 8px;
+        /* Остаётся неизменным */
+        width: 100%;
+        /* Занимает всю ширину блока */
+        height: auto;
+        /* Автоматическая высота для пропорций */
+        object-fit: cover;
+        /* Сохраняем аккуратное отображение */
+    }
+
+    .nav-row a {
+        font-size: 12px;
+        /* Уменьшаем размер шрифта */
+        line-height: 15px;
+    }
+
+    .nav-row a:last-of-type {
+        display: none;
+    }
+
+    .nav-row img {
+        display: none;
+    }
+
+    .bottom-rectangle {
+        display: none;
+    }
+
+    .section-testimonial {
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 10%;
+        /* Корректируем нижний отступ */
+    }
+
+    .testimonial-top-row {
+        text-align: center;
+        /* Центрируем текст */
+        gap: 5px;
+        /* Уменьшаем расстояние между строками */
+    }
+
+    .testimonial-top-row h1 {
+        margin-bottom: 0;
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    .testimonial-top-row h2 {
+        font-size: 24px; /* Уменьшаем заголовок */
+        line-height: 28px;
+    }
+
+    .testimonial-block-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        /* Размещение всех блоков по одной колонке */
+        gap: 10px;
+        /* Пространство между строками */
+        margin-top: -30%;
+        /* Корректируем верхний отступ */
+        padding-top: 0;
+    }
+    .customer img {
+        transform: scale(0.85);
+    }
+
+    .testimonial-block-item {
+        height: auto;
+        /* Динамическая высота для адаптации контента */
+    }
+
+    .rounded-block-large {
+        height: auto;
+        /* Адаптивная высота */
+        box-sizing: border-box;
+        padding: 10px;
+        /* Добавляем внутренние отступы */
+        margin-left: 8%;
+        border-radius: 15px;
+        /* Корректируем скругление углов */
+    }
+    .rounded-block-large br {
+        display: none; /* Скрываем <br> на маленьких экранах */
+    }
+    .rounded-block-large p {
+        font-size: 12px; /* Компактный шрифт для текста */
+        line-height: 18px;
+        /* Высота строки */
+        margin-bottom: 0;
+        margin-top: 40%;
+    }
+
+    .customer-text span:first-of-type {
+        font-size: 16px;
+        /* Уменьшаем размер имени */
+    }
+
+    .customer-text span:last-of-type {
+        font-size: 12px;
+        /* Уменьшаем размер описания */
+        margin-top: -2%;
+    }
+
+    .testimonial-block-people {
+        width: 80%;
+        /* Уменьшаем размер изображения */
+        height: auto;
+        /* Сохраняем пропорции */
+    }
+
+    .testimonial-block-item.narrow {
+        display: flex;
+        /* Меняем направление флекс-контейнера на строку */
+        flex-direction: row;
+        /* Располагаем изображения горизонтально */
+        gap: 10px;
+        /* Добавляем промежуток между изображениями */
+        justify-content: center;
+        /* Центрируем изображения внутри блока */
+        align-items: center;
+        /* Выравниваем изображения по вертикали */
+    }
+
+    .testimonial-block-item.narrow img {
+        width: 30px;
+        /* Уменьшаем размер кнопок */
+        height: 30px;
+        transform: rotate(90deg);
+    }
+
+    .testimonial-block-item.large {
+        width: 100%;
+        /* Занимает всю доступную ширину */
+        height: auto;
+        /* Автоматическая высота */
+        overflow: visible;
+        /* Обеспечивает видимость всего содержимого */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .testimonial-block-people {
+        width: 90%;
+        /* Уменьшаем размер изображения */
+        height: auto;
+    }
+    .section-have-project {
+        height: auto;
+        /* Автоматическая высота для адаптации содержимого */
+        margin: 0 auto;
+        /* Убираем боковые отступы */
+        padding: 10px;
+        /* Добавляем внутренние отступы */
+        display: flex;
+        flex-direction: column;
+        /* Элементы располагаются вертикально */
+        align-items: center;
+        /* Центрируем содержимое по горизонтали */
+        margin-bottom: 8%;
+    }
+
+    .section-have-project-space {
+        display: none;
+        /* Убираем пустое пространство для упрощения */
+    }
+
+    .section-have-project-rounded-block {
+        height: auto;
+        /* Автоматическая высота для блока */
+        width: 100%;
+        /* Занимает всю ширину контейнера */
+        padding: 10px;
+        /* Внутренние отступы */
+        display: flex;
+        flex-direction: column;
+        /* Элементы располагаются вертикально */
+        align-items: center;
+        /* Центрируем текст и кнопку */
+        text-align: center;
+        /* Центрируем текст */
+    }
+
+    .section-have-project-rounded-block h2 {
+        font-size: 24px; /* Уменьшаем заголовок */
+        line-height: 28px;
+        margin-bottom: 6%;
+        /* Уменьшаем отступ снизу */
+    }
+
+    .section-have-project-rounded-block a {
+        padding: 6px 20px; /* Уменьшаем внутренние отступы для компактности */
+        font-size: 12px;
+    }
+
+    .section-have-project img {
+        display: none;
+    }
+
+
+    footer {
+        margin: 0 auto;
+        max-width: 315px;
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+    }
+
+    .footer-grid {
+        display: grid;
+        /* Используем CSS Grid */
+        grid-template-rows: auto auto;
+        /* Две строки */
+        gap: 0;
+        /* Расстояние между блоками */
+        max-width: 320px;
+        /* Полная ширина */
+        margin-bottom: 1%;
+        overflow-x: hidden;
+        box-sizing: border-box;
+        padding-bottom: 2%;
+    }
+    .footer-part.logo-down,
+    .footer-part.join {
+        grid-row: 1 / 2;
+        justify-self: start;
+        /* Центрируем блоки по горизонтали */
+        align-self: center;
+        /* Центрируем блоки по вертикали */
+        text-align: left;
+        /* Выравниваем содержимое блоков по левому краю */
+        height: 160px;
+        margin: 0;
+        margin-bottom: 3%;
+    }
+    .footer-part.join{
+        margin-left: -30%;
+        margin-top: 3%;
+    }
+
+    .footer-grid> :nth-child(1),
+    /* Левый блок на первой строке */
+    .footer-grid> :nth-child(5) {
+
+    }
+
+    .footer-part.service,
+    .footer-part.company,
+    .footer-part.media {
+        grid-row: 2 / 3;
+        /* Располагаем блоки на второй строке */
+        grid-column: auto;
+        /* Автоматическое распределение по столбцам */
+        width: 100%;
+        /* Каждый блок занимает всю возможную ширину */
+        height: 210px;
+        padding: 0; /* Убираем отступы внутри блоков */
+        margin: 0 auto; 
+    }
+    .footer-part.company{
+        margin-left: -50%;
+    }
+    .footer-part.media{
+        margin-left: -110%;
+    }
+
+    .footer-part {
+        text-align: left;
+        /* Элементы внутри остаются выровненными по левому краю */
+    }
+
+    .footer-part.logo-down img {
+        max-width: 25%;
+        /* Устанавливаем максимальную ширину для всех изображений */
+        height: auto;
+        /* Сохраняем пропорции */
+    }
+    .footer-logo{
+        margin-bottom: 3%;
+    }
+    .info{
+        gap: 2%;
+        margin-bottom: -2%;
+    }
+    .info img {
+        width: 10%;
+        /* Устанавливаем ширину для всех изображений */
+        height: auto;
+        margin-top: -3%;
+    }
+
+    .footer-part {
+        font-size: 12px; /* Уменьшаем общий размер текста */
+        line-height: 16px;
+    }
+
+    .footer-part h2 {
+        font-size: 11px; /* Уменьшаем размер заголовков */
+        line-height: 16px;
+        margin-bottom: 10px;
+    }
+
+    .footer-part a {
+        font-size: 10px; /* Уменьшаем размер текста ссылок */
+        line-height: 16px;
+    }
+
+    .info span {
+        font-size: 12px; /* Уменьшаем текст информации */
+        line-height: 16px;
+    }
+    .footer-part.logo-down{
+        gap: 1%;
+    }
+
+    .footer-logo span {
+        margin-left: -9%;
+        padding-top: 6%;
+        font-size: 17px;
+        /* Уменьшаем текст логотипа */
+        line-height: 20px;
+    }
+    .footer-logo img{
+        transform: scale(0.85);
+    }
+    .footer-part.join span {
+        font-size: 12px;
+        /* Уменьшаем текст подписки */
+        line-height: 16px;
+    }
+
+    .footer-part.join a {
+        font-size: 10px;
+        /* Уменьшаем текст кнопки подписки */
+        padding: 10px 17px;
+        /* Уменьшаем внутренние отступы кнопки */
+    }
+
+    .input-field {
+        width: 135px;
+        font-size: 12px;
+        /* Уменьшаем текст подсказки в поле */
+        padding-left: 10px;
+        /* Уменьшаем внутренний отступ */
+        height: 40px;
+        /* Уменьшаем высоту поля */
+        margin-bottom: 15%;
+    }
+    .footer-bottom {
+        margin-top: 1%;
+        display: flex; /* Переключаемся на Flexbox */
+        flex-direction: column; /* Элементы располагаются в колонку */
+        align-items: center; /* Центрируем элементы по горизонтали */
+        justify-content: center; /* Центрируем элементы по вертикали */
+        gap: 5px; /* Расстояние между элементами */
+        padding: 15px 0; /* Добавляем отступ сверху и снизу */
+    }
+    .footer-bottom-left span {
+        font-size: 10px; /* Уменьшаем текст */
+        line-height: 14px; /* Межстрочный интервал */
+        text-align: center; /* Центрируем текст */
+    }
+    
+    .footer-bottom-right {
+        display: flex; /* Оставляем Flexbox для ссылок */
+        flex-direction: row; /* Ссылки располагаются в строку */
+        justify-content: center; /* Центрируем содержимое */
+        gap: 6px; /* Расстояние между ссылками */
+    }
+    
+    .footer-bottom-right a {
+        font-size: 10px; /* Уменьшаем текст ссылок */
+        line-height: 14px;
+    }
+}
