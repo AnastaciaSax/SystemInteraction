@@ -9,7 +9,7 @@ html {
     width: 1920px;
     height: 5658px;
     margin: 0 auto;
-    background: url('./Assets/background.png') no-repeat center center;
+    background: url('../Assets/background.png') no-repeat center center;
     background-size: cover;
     overflow-x: hidden;
 }
@@ -109,7 +109,7 @@ nav a {
     padding-left: 52px;
     margin: 0 auto;
     border-radius: 70px;
-    background: url('./Assets/banner.png') no-repeat center center / cover;
+    background: url('../Assets/banner.png') no-repeat center center / cover;
 }
 
 .banner-intro {
@@ -643,7 +643,7 @@ footer {
 /* dark mode */
 body.dark-theme,
 html.dark-theme {
-    background: url('./Assets/darkBg.png') no-repeat center center;
+    background: url('../Assets/darkBg.png') no-repeat center center;
     background-size: cover;
 }
 

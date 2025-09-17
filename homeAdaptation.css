@@ -486,7 +486,7 @@
         padding: 80px 16px;
         margin: 0 auto;
         border-radius: 32px;
-        background: url('./Assets/banner.png') no-repeat center center / cover;
+        background: url('../Assets/banner.png') no-repeat center center / cover;
     }
 
     .banner-intro {
