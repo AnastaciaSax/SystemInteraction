@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 function Slider() {
   const slides = [
-    { src: "/assets/bed1.png", category: "Bedroom" },
-    { src: "/assets/kitchen1.jpg", category: "Kitchen" },
-    { src: "/assets/bath1.jpg", category: "Bathroom" },
-    { src: "/assets/bed5.jpg", category: "Bedroom" },
-    { src: "/assets/kitchen2.jpg", category: "Kitchen" },
-    { src: "/assets/dining1.jpg", category: "Dining%20Hall" },
+    { src: "/Assets/bed1.png", category: "Bedroom" },
+    { src: "/Assets/kitchen1.jpg", category: "Kitchen" },
+    { src: "/Assets/bath1.jpg", category: "Bathroom" },
+    { src: "/Assets/bed5.jpg", category: "Bedroom" },
+    { src: "/Assets/kitchen2.jpg", category: "Kitchen" },
+    { src: "/Assets/dining1.jpg", category: "Dining%20Hall" },
   ];
 
   return (
@@ -24,8 +24,8 @@ function Slider() {
         ))}
       </div>
       <div className="slider-but">
-        <button className="prev"><img src="/assets/arrowPrev.svg" alt="Previous"/></button>
-        <button className="next"><img src="/assets/arrowNext.svg" alt="Next"/></button>
+        <button className="prev"><img src="/Assets/arrowPrev.svg" alt="Previous"/></button>
+        <button className="next"><img src="/Assets/arrowNext.svg" alt="Next"/></button>
       </div>
     </div>
   );

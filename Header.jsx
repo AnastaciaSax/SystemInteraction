@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
+    <div className="header-container">
     <header>
       <div className="logo">
-        <img src="/assets/Logo.png" alt="Logo" />
+        <img src="/Assets/Logo.png" alt="Logo" />
         <h1>Interno</h1>
       </div>
       <nav>
@@ -16,12 +17,12 @@ function Header() {
         <Link to="/checkIn">Check In</Link>
         <Link to="/signIn">Sign In</Link>
         <Link to="/options" className="optionBut">
-          <img src="/assets/optionsIcon.svg" alt="Options" />
+          <img src="/Assets/optionsIcon.svg" alt="Options" />
         </Link>
       </nav>
       <div className="burger">
         <button className="burger-toggle">
-          <img src="/assets/hamburger.svg" alt="Menu" />
+          <img src="/Assets/hamburger.svg" alt="Menu" />
         </button>
         <div className="burger-menu">
           <Link to="/">Home</Link>
@@ -34,6 +35,7 @@ function Header() {
         </div>
       </div>
     </header>
+    </div>
   );
 }
 

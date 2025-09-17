@@ -27,15 +27,17 @@ const ContactSection = () => {
           </div>
         </div>
       </div>
-      <div className="map-container">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.9363747399586!2d-73.98502118459355!3d40.69057257933426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a30f4a8ea9d%3A0x7ec99e56c8d3b169!2sLong%20Island%20University%20Brooklyn!5e0!3m2!1sen!2sus!4v1682355282600!5m2!1sen!2sus"
-          className="map-embed"
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="Google Map"
-        />
+    <div className="map-container">
+        <div id="map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.9363747399586!2d-73.98502118459355!3d40.69057257933426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a30f4a8ea9d%3A0x7ec99e56c8d3b169!2sLong%20Island%20University%20Brooklyn!5e0!3m2!1sen!2sus!4v1682355282600!5m2!1sen!2sus"
+            className="map-embed"
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Google Map"
+          />
+        </div>
       </div>
     </div>
   );

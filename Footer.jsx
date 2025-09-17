@@ -8,16 +8,19 @@ function Footer() {
         <div className="interno-info">
           <div className="interno-info-text">
             <div className="logo">
-              <img src="/assets/Logo.png" alt="Logo" />
+              <img src="/Assets/Logo.png" alt="Logo" />
               <h1>Interno</h1>
             </div>
-            <p>"Design Your Dream, Live Your Vision"<br/>We create interiors that are an extension of your unique story.</p>
+            <p>
+              "Design Your Dream, Live Your Vision"<br />
+              We create interiors that are an extension of your unique story.
+            </p>
           </div>
           <div className="interno-info-media">
-            <img src="/assets/media.png" alt="Media icon"/>
-            <img src="/assets/meadia1.png" alt="Media icon"/>
-            <img src="/assets/meadia2.png" alt="Media icon"/>
-            <img src="/assets/meadia3.png" alt="Media icon"/>
+            <img src="/Assets/media.png" alt="Media icon" />
+            <img src="/Assets/meadia1.png" alt="Media icon" />
+            <img src="/Assets/meadia2.png" alt="Media icon" />
+            <img src="/Assets/meadia3.png" alt="Media icon" />
           </div>
         </div>
         <div className="interno-page">

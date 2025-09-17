@@ -13,7 +13,7 @@ function homeBanner() {
         <button className="banner-but">
           <div className="get-started">
             <Link to="/catalog">Get Started</Link>
-            <img src="/assets/arrowButton.svg" alt="Arrow"/>
+            <img src="/Assets/arrowButton.svg" alt="Arrow"/>
           </div>
         </button>
       </div>
