@@ -1,0 +1,96 @@
+.banner--item {
+    width: 100%;
+    padding-top: 182px;
+    background: url('../Assets/cartBanner.png') no-repeat center center; /* поменяй на нужную картинку */
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.banner--item .intro {
+    display: flex;
+    width: 26.2%;
+    padding: 41px 68px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 37px 37px 0px 0px;
+    background: #FFF;
+}
+
+.banner--item .into-title {
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.banner--item .intro h2 {
+    font-size: 50px;
+}
+
+.banner--item .intro span {
+    font-size: 22px;
+}
+
+
+.details-card {
+  display: flex;
+  width: 100%;
+  gap: 40px;
+  align-items: center;
+}
+
+.details-pic {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.details-pic img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.details-info {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.details-info h3 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.details-info p {
+  font-size: 25px;
+  margin: 0;
+}
+
+.details-price {
+  font-size: 30px;
+  font-weight: bold;
+  color: #e56413;
+}
+
+.catalog-butt a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: #d1760f;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 25px;
+  transition: 0.3s ease;
+}
+
+.catalog-butt a:hover {
+  background: #17d133;
+}
