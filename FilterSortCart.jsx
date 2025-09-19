@@ -7,6 +7,7 @@ function FilterSortCart({
   setCurrentSort,
   currentSearch,
   setCurrentSearch,
+  onAddService,
 }) {
   const filterButtons = [
     { place: "Bathroom", label: "bathroom" },
@@ -83,12 +84,9 @@ function FilterSortCart({
           />
         </div>
 
-        <div className="cart-butt">
-          <a href="cart.html">
-            <img src="/Assets/cart.svg" alt="Cart" data-i18n-alt="cartIcon" />
-            <span data-i18n="cartButton">Cart</span>
-          </a>
-        </div>
+       <div className="cart-butt">
+    <button onClick={onAddService}>+ New Service</button>
+  </div>
       </div>
     </div>
   );

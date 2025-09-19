@@ -11,14 +11,7 @@ function Header() {
       </div>
       <nav>
         <Link to="/">Home</Link>
-        <Link to="/team">Team</Link>
         <Link to="/catalog">Catalog</Link>
-        <Link to="/cart">Cart</Link>
-        <Link to="/checkIn">Check In</Link>
-        <Link to="/signIn">Sign In</Link>
-        <Link to="/options" className="optionBut">
-          <img src="/Assets/optionsIcon.svg" alt="Options" />
-        </Link>
       </nav>
       <div className="burger">
         <button className="burger-toggle">
@@ -26,12 +19,7 @@ function Header() {
         </button>
         <div className="burger-menu">
           <Link to="/">Home</Link>
-          <Link to="/team">Team</Link>
           <Link to="/catalog">Catalog</Link>
-          <Link to="/cart">Cart</Link>
-          <Link to="/checkIn">Check In</Link>
-          <Link to="/signIn">Sign In</Link>
-          <Link to="/options">Options</Link>
         </div>
       </div>
     </header>

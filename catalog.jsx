@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Preloader from "../components/Preloader";
 import Header from "../components/Header";
 import CatalogBanner from "../components/AtalogBanner";
@@ -6,46 +7,85 @@ import FilterSortCart from "../components/FilterSortCart";
 import ServiceList from "../components/ServiceList";
 import Pagination from "../components/Pagination";
 import Footer from "../components/Footer";
+import ItemEditForm from "../components/ItemEditForm";
+
+import servicesData from "../data/db.json";
 
 import "../styles/catalogStyle.css";
 import "../styles/catalogAdaptation.css";
 import "../styles/catalogAnimation.css";
 
 function CatalogPage() {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const categoryFromURL = queryParams.get("category");
+
   const [services, setServices] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [currentPlace, setCurrentPlace] = useState(null);
+  const [currentPlace, setCurrentPlace] = useState(categoryFromURL || null);
   const [currentSort, setCurrentSort] = useState(null);
   const [currentSearch, setCurrentSearch] = useState("");
-  const [cartCount, setCartCount] = useState(0);
   const [loading, setLoading] = useState(true);
+    const [cartCount, setCartCount] = useState(0);
+
+    const [editingService, setEditingService] = useState(null);
 
   const servicesPerPage = 4;
-  const userId = 1;
 
   // Fetch services
-  useEffect(() => {
-    fetch("http://localhost:3001/services")
-      .then((res) => res.json())
-      .then((data) => setServices(data))
-      .catch((err) => console.error("Error fetching services:", err))
-      .finally(() => setLoading(false));
-  }, []);
+useEffect(() => {
+  setServices(servicesData.services); // берем массив services
+  setLoading(false);
+}, []);
 
-  // Update cart count
-  const updateCartCount = async () => {
-    try {
-      const res = await fetch(`http://localhost:3001/cart?userId=${userId}`);
-      const data = await res.json();
-      setCartCount(data.length);
-    } catch (err) {
-      console.error("Error fetching cart:", err);
-    }
+// Обновляем currentPlace, если изменился параметр category
+  useEffect(() => {
+    setCurrentPlace(categoryFromURL || null);
+    setCurrentPage(1); // сбрасываем пагинацию
+  }, [categoryFromURL]);
+
+  // Добавление нового сервиса
+const handleAddService = () => {
+  const newService = {
+    id: String(Date.now()),
+    title: "New Service",
+    category: "Other",
+    price: 0,
+    photoURL: "./Assets/placeholder.png",
+    place: "Unknown",
   };
+  setServices([newService, ...services]); // добавляем в начало списка
+};
 
-  useEffect(() => {
-    updateCartCount();
-  }, []);
+// Удаление сервиса
+const handleDeleteService = (id) => {
+  if (window.confirm("Are you sure you want to delete this service?")) {
+    setServices(services.filter((s) => s.id !== id));
+  }
+};
+
+// Редактирование сервиса
+const handleUpdateService = (updatedService) => {
+  setServices(
+    services.map((s) => (s.id === updatedService.id ? updatedService : s))
+  );
+};
+
+// Функция открытия модалки
+const handleOpenEdit = (service) => {
+  setEditingService(service);
+};
+
+// Функция закрытия модалки
+const handleCloseEdit = () => {
+  setEditingService(null);
+};
+
+// Функция сохранения
+const handleSaveEdit = (updatedService) => {
+  handleUpdateService(updatedService);
+  setEditingService(null);
+};
 
   // Filtered, searched, sorted services
   const filteredServices = services
@@ -69,31 +109,9 @@ function CatalogPage() {
   );
 
   // Add service to cart
-  const addToCart = async (serviceId) => {
-    try {
-      const res = await fetch(
-        `http://localhost:3001/cart?userId=${userId}&serviceId=${serviceId}`
-      );
-      const existingItems = await res.json();
-
-      if (existingItems.length > 0) {
-        alert("This service is already in your cart.");
-        return;
-      }
-
-      await fetch("http://localhost:3001/cart", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId, serviceId }),
-      });
-
-      updateCartCount();
-      alert("Service added to cart!");
-    } catch (err) {
-      console.error("Failed to add service to cart:", err);
-    }
+const addToCart = (serviceId) => {
+    alert("The Cart page is in the works currently! Thanks for attention :)");
   };
-
   return (
     <>
       <Preloader loading={loading} />
@@ -118,9 +136,15 @@ function CatalogPage() {
             setCurrentSearch(search);
             setCurrentPage(1);
           }}
+           onAddService={handleAddService}
         />
 
-        <ServiceList services={paginatedServices} addToCart={addToCart} />
+        <ServiceList
+  services={paginatedServices}
+  onEdit={handleUpdateService}
+  onDelete={handleDeleteService}
+  onOpenEdit={handleOpenEdit}
+/>
 
         <Pagination
           currentPage={currentPage}
@@ -130,6 +154,13 @@ function CatalogPage() {
       </div>
 
       <Footer />
+      {editingService && (
+  <ItemEditForm
+    item={editingService}
+    onSave={handleSaveEdit}
+    onCancel={handleCloseEdit}
+  />
+)}
     </>
   );
 }

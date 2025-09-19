@@ -27,9 +27,6 @@ function Footer() {
           <h3>Pages</h3>
           <Link to="/">Home</Link>
           <Link to="/catalog">Catalog</Link>
-          <Link to="/cart">Cart</Link>
-          <Link to="/team">Team</Link>
-          <Link to="/options">Options</Link>
         </div>
         <div className="interno-service">
           <h3>Services</h3>

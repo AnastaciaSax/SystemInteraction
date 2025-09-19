@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import ItemEditForm from "./ItemEditForm";
 
-function ServiceList({ services, addToCart }) {
-  if (services.length === 0)
+function ServiceList({ services, onEdit, onDelete, onOpenEdit }) {
+  const [editingId, setEditingId] = useState(null);
+
+  if (services.length === 0) {
     return (
       <div className="service-card">
         <div className="not-found-message">
@@ -9,6 +13,7 @@ function ServiceList({ services, addToCart }) {
         </div>
       </div>
     );
+  }
 
   return (
     <div className="service-card">
@@ -19,19 +24,44 @@ function ServiceList({ services, addToCart }) {
             index === 0 ? "first" : index === services.length - 1 ? "last" : ""
           }`}
         >
-          <div className="service-pic">
-            <img src={service.photoURL} alt={service.title} />
-          </div>
-          <div className="service-info">
-            <div className="service-title">
-              <h3>{service.title}</h3>
-              <p>{service.category}</p>
-            </div>
-            <p className="price">$ {service.price}</p>
-            <button className="add-to-cart" onClick={() => addToCart(service.id)}>
-              <img src="/Assets/cart.svg" alt="Add to cart" />
-            </button>
-          </div>
+          {editingId === service.id ? (
+            <ItemEditForm
+              item={service}
+              onSave={(updated) => {
+                onEdit(updated);
+                setEditingId(null);
+              }}
+              onCancel={() => setEditingId(null)}
+            />
+          ) : (
+            <>
+              <Link to={`/catalog/${service.id}`} className="service-link">
+                <div className="service-pic">
+                  <img src={service.photoURL} alt={service.title} />
+                </div>
+              </Link>
+
+              <div className="service-info">
+                <div className="service-title">
+                  <Link to={`/catalog/${service.id}`} className="service-link">
+                    <h3>{service.title}</h3>
+                    <p>{service.category}</p>
+                  </Link>
+                </div>
+
+                <p className="price">$ {service.price}</p>
+
+  <div className="service-controls">
+  <button onClick={() => onOpenEdit(service)}>
+    <img src="/Assets/editBut.svg" alt="Edit" />
+  </button>
+  <button onClick={() => onDelete(service.id)}>
+    <img src="/Assets/bin.svg" alt="Delete" />
+  </button>
+</div>
+              </div>
+            </>
+          )}
         </div>
       ))}
     </div>

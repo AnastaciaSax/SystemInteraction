@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import Preloader from "../components/Preloader";
 import ItemBanner from "../components/ItemBanner";
 import ItemContent from "../components/ItemContent";
+import ItemEditForm from "../components/ItemEditForm";
 import "../styles/ItemDetails.css";
 import "../styles/ItemDetailsAdaptation.css";
 
@@ -10,14 +11,32 @@ import servicesData from "../data/db.json";
 
 const ItemDetails = () => {
   const { id } = useParams();
+
+  const [services, setServices] = useState([]);
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isEditing, setIsEditing] = useState(false);
 
-useEffect(() => {
-  const found = servicesData.services.find((el) => el.id === id);
-  setItem(found);
-  setLoading(false);
-}, [id]);
+  // грузим список
+  useEffect(() => {
+    setServices(servicesData.services);
+  }, []);
+
+  // ищем выбранный элемент
+  useEffect(() => {
+    const found = services.find((el) => el.id === id);
+    setItem(found);
+    setLoading(false);
+  }, [id, services]);
+
+  const handleUpdate = (updatedItem) => {
+    const updated = services.map((el) =>
+      el.id === updatedItem.id ? updatedItem : el
+    );
+    setServices(updated);
+    setItem(updatedItem);
+    setIsEditing(false);
+  };
 
   if (loading) return <Preloader />;
 
@@ -33,7 +52,22 @@ useEffect(() => {
   return (
     <div className="container">
       <ItemBanner title={item.title} />
-      <ItemContent item={item} />
+
+      {isEditing ? (
+        <ItemEditForm
+          item={item}
+          onSave={handleUpdate}
+          onCancel={() => setIsEditing(false)}
+        />
+      ) : (
+        <ItemContent item={item} />
+      )}
+
+      {!isEditing && (
+        <button className="edit-btn" onClick={() => setIsEditing(true)}>
+          Edit
+        </button>
+      )}
     </div>
   );
 };
