@@ -1,0 +1,118 @@
+@media (min-width: 768px) and (max-width: 1024px) {
+  .banner--item {
+    padding-top: 140px;
+    background-size: cover;
+  }
+
+  .banner--item .intro {
+    width: 50%;
+    padding: 30px 40px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .banner--item .into-title h2 {
+    font-size: 36px;
+  }
+
+  .banner--item .into-title span {
+    font-size: 18px;
+  }
+
+  .details-card {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .details-pic {
+    flex: 1;
+  }
+
+  .details-pic img {
+    max-width: 90%;
+  }
+
+  .details-info {
+    flex: 1;
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .details-info h3 {
+    font-size: 32px;
+  }
+
+  .details-info p {
+    font-size: 20px;
+  }
+
+  .details-price {
+    font-size: 26px;
+  }
+
+  .catalog-butt a {
+    font-size: 20px;
+    padding: 10px 18px;
+  }
+}
+
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .banner--item {
+    padding-top: 100px;
+    background-size: cover;
+  }
+
+  .banner--item .intro {
+    width: 80%;
+    padding: 20px;
+    border-radius: 15px 15px 0 0;
+  }
+
+  .banner--item .into-title h2 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .banner--item .into-title span {
+    font-size: 14px;
+  }
+
+  .details-card {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .details-pic {
+    flex: 1;
+  }
+
+  .details-pic img {
+    max-width: 100%;
+  }
+
+  .details-info {
+    flex: 1;
+    padding: 10px;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .details-info h3 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .details-info p {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .details-price {
+    font-size: 20px;
+  }
+
+  .catalog-butt a {
+    font-size: 18px;
+    padding: 8px 16px;
+  }
+}
