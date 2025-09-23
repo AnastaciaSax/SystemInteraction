@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Box, InputBase } from "@mui/material";
 import "../styles/ItemDetails.css"; 
 
 const ItemEditForm = ({ item, onSave, onCancel }) => {
@@ -15,38 +16,54 @@ const ItemEditForm = ({ item, onSave, onCancel }) => {
   };
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
+    <Box className="modal-overlay">
+      <Box className="modal-content">
         <h2>Edit Service</h2>
         <form className="edit-form" onSubmit={handleSubmit}>
           <label>
             Title:
-            <input name="title" value={formData.title} onChange={handleChange} />
+            <InputBase
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              fullWidth
+            />
           </label>
           <label>
             Category:
-            <input name="category" value={formData.category} onChange={handleChange} />
+            <InputBase
+              name="category"
+              value={formData.category}
+              onChange={handleChange}
+              fullWidth
+            />
           </label>
           <label>
             Place:
-            <input name="place" value={formData.place} onChange={handleChange} />
+            <InputBase
+              name="place"
+              value={formData.place}
+              onChange={handleChange}
+              fullWidth
+            />
           </label>
           <label>
             Price:
-            <input
+            <InputBase
               type="number"
               name="price"
               value={formData.price}
               onChange={handleChange}
+              fullWidth
             />
           </label>
-          <div className="edit-form-buttons">
+          <Box className="edit-form-buttons">
             <button type="submit" className="edit-btn">Save</button>
             <button type="button" className="edit-btn" onClick={onCancel}>Cancel</button>
-          </div>
+          </Box>
         </form>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 
