@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import ItemEditForm from "./ItemEditForm";
 
@@ -7,18 +8,18 @@ function ServiceList({ services, onEdit, onDelete, onOpenEdit }) {
 
   if (services.length === 0) {
     return (
-      <div className="service-card">
-        <div className="not-found-message">
+      <Box className="service-card">
+        <Box className="not-found-message">
           Sorry, no services found for what you're looking for.
-        </div>
-      </div>
+        </Box>
+      </Box>
     );
   }
 
   return (
-    <div className="service-card">
+    <Box className="service-card">
       {services.map((service, index) => (
-        <div
+        <Box
           key={service.id}
           className={`service-item ${
             index === 0 ? "first" : index === services.length - 1 ? "last" : ""
@@ -36,36 +37,37 @@ function ServiceList({ services, onEdit, onDelete, onOpenEdit }) {
           ) : (
             <>
               <Link to={`/catalog/${service.id}`} className="service-link">
-                <div className="service-pic">
+                <Box className="service-pic">
                   <img src={service.photoURL} alt={service.title} />
-                </div>
+                </Box>
               </Link>
 
-              <div className="service-info">
-                <div className="service-title">
+              <Box className="service-info">
+                <Box className="service-title">
                   <Link to={`/catalog/${service.id}`} className="service-link">
                     <h3>{service.title}</h3>
                     <p>{service.category}</p>
                   </Link>
-                </div>
+                </Box>
 
                 <p className="price">$ {service.price}</p>
 
-  <div className="service-controls">
-  <button onClick={() => onOpenEdit(service)}>
-    <img src="/Assets/editBut.svg" alt="Edit" />
-  </button>
-  <button onClick={() => onDelete(service.id)}>
-    <img src="/Assets/bin.svg" alt="Delete" />
-  </button>
-</div>
-              </div>
+                <Box className="service-controls">
+                  <button onClick={() => onOpenEdit(service)}>
+                    <img src="/Assets/editBut.svg" alt="Edit" />
+                  </button>
+                  <button onClick={() => onDelete(service.id)}>
+                    <img src="/Assets/bin.svg" alt="Delete" />
+                  </button>
+                </Box>
+              </Box>
             </>
           )}
-        </div>
+        </Box>
       ))}
-    </div>
+    </Box>
   );
 }
 
 export default ServiceList;
+
