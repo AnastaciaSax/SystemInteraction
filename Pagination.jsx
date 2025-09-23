@@ -1,10 +1,11 @@
 import React from "react";
+import { Box } from "@mui/material";
 
 function Pagination({ currentPage, totalPages, setCurrentPage }) {
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
-    <div className="pagination">
+    <Box className="pagination">
       <button
         className="prev-page"
         onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
@@ -12,7 +13,7 @@ function Pagination({ currentPage, totalPages, setCurrentPage }) {
         <img src="/Assets/catalogArrowPagin.png" alt="Back" />
       </button>
 
-      <div className="page">
+      <Box className="page">
         {pages.map((num) => (
           <button
             key={num}
@@ -22,7 +23,7 @@ function Pagination({ currentPage, totalPages, setCurrentPage }) {
             {num < 10 ? `0${num}` : num}
           </button>
         ))}
-      </div>
+      </Box>
 
       <button
         className="next-page"
@@ -30,7 +31,7 @@ function Pagination({ currentPage, totalPages, setCurrentPage }) {
       >
         <img src="/Assets/catalogArrowPagin.png" alt="Next" />
       </button>
-    </div>
+    </Box>
   );
 }
 
