@@ -1,4 +1,5 @@
 import React from "react";
+import { Box, InputBase } from "@mui/material";
 
 function FilterSortCart({
   currentPlace,
@@ -18,9 +19,9 @@ function FilterSortCart({
   ];
 
   return (
-    <div className="project">
-      <div className="filt">
-        <div className="filt-content">
+    <Box className="project">
+      <Box className="filt">
+        <Box className="filt-content">
           {filterButtons.map((btn) => (
             <button
               key={btn.place}
@@ -34,28 +35,28 @@ function FilterSortCart({
               {btn.label}
             </button>
           ))}
-        </div>
-      </div>
+        </Box>
+      </Box>
 
-      <div className="field">
-        <div className="search">
+      <Box className="field">
+        <Box className="search">
           <img
             src="/Assets/catalogSearch.svg"
             alt="magnifying glass"
             data-i18n-alt="searchIcon"
           />
-          <div className="search-input">
-            <input
-              type="text"
+          <Box className="search-input">
+            <InputBase
               placeholder=""
               data-i18n-placeholder="searchPlaceholder"
               value={currentSearch}
               onChange={(e) => setCurrentSearch(e.target.value)}
+              fullWidth
             />
-          </div>
-        </div>
+          </Box>
+        </Box>
 
-        <div className="sort">
+        <Box className="sort">
           <select
             id="sort"
             name="sort"
@@ -82,13 +83,13 @@ function FilterSortCart({
             className="select-arrow"
             data-i18n-alt="sortIcon"
           />
-        </div>
+        </Box>
 
-       <div className="cart-butt">
-    <button onClick={onAddService}>+ New Service</button>
-  </div>
-      </div>
-    </div>
+        <Box className="cart-butt">
+          <button onClick={onAddService}>+ New Service</button>
+        </Box>
+      </Box>
+    </Box>
   );
 }
 
