@@ -1,0 +1,55 @@
+
+.notfound-page {
+  width: 100%;
+  height: 100vh;
+  background: url("../../Assets/background.png") no-repeat center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.notfound-content {
+  text-align: center;
+  padding: 80px 100px;
+  border-radius: 37px;
+}
+
+.notfound-title {
+  font-family: "DM Serif Display", serif;
+  font-size: 160px;
+  color: #c98740;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.notfound-subtitle {
+  font-family: "DM Serif Display", serif;
+  font-size: 36px;
+  color: #292f36;
+  margin-bottom: 16px;
+}
+
+.notfound-text {
+  font-family: "Jost", sans-serif;
+  font-size: 20px;
+  color: #4d5053;
+  margin-bottom: 40px;
+}
+
+.notfound-button {
+  display: inline-block;
+  padding: 16px 48px;
+  border-radius: 18px;
+  background-color: #c98740;
+  color: #fff;
+  font-size: 20px;
+  font-family: "Jost", sans-serif;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.notfound-button:hover {
+  background-color: #a76a31;
+}
