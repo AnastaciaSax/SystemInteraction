@@ -8,6 +8,8 @@ import ItemDetails from "./pages/ItemDetails/ItemDetails";
 import NotFound from "./pages/NotFound/NotFound";
 //import Cart from "./pages/cart";
 
+import "./i18n/i18n";
+
 // 404 page
 // folder for page (css + page) + component
 
