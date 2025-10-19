@@ -1,0 +1,102 @@
+/* service-card */
+.service-card {
+    column-count: 2;
+    column-gap: 30px;
+    width: 64.5%;
+     margin: 0 auto;
+    max-height: 1596px;
+    overflow: hidden;
+}
+
+.service-item {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 30px;
+    break-inside: avoid;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 24px;
+}
+
+.service-pic {
+    width: 100%;
+    height: 522px;
+    overflow: hidden;
+}
+
+.service-item.first .service-pic,
+.service-item.last .service-pic {
+    height: 853px;
+    overflow: hidden;
+}
+
+.service-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* убирает лишние отступы под img */
+}
+
+.service-info {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.service-title {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.service-title h3 {
+    font-size: 25px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.service-title p {
+    font-size: 22px;
+}
+
+.price {
+    font-size: 32px;
+    letter-spacing: 0.32px;
+    white-space: nowrap;
+    flex: 1;
+}
+
+.service-controls {
+  display: flex;
+  justify-content: flex-end; /* кнопки справа */
+  gap: 15px; /* расстояние между кнопками */
+  margin-top: 10px;
+}
+
+/* Сами кнопки */
+.service-controls button {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+/* Картинки внутри кнопок */
+.service-controls button img {
+  width: 50px;
+  height: 50px;
+}
+
+/* Эффект наведения */
+.service-controls button:hover img {
+  transform: scale(1.1);
+}
