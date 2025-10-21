@@ -1,4 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  fetchServices,
+  addService,
+  deleteService,
+  updateService,
+  clearError,
+} from "../../slices/servicesSlice";
+
 import { useLocation } from "react-router-dom";
 import Preloader from "../../components/Preloader/Preloader";
 import Header from "../../components/Header/Header";
@@ -16,76 +25,50 @@ import "./catalogAdaptation.css";
 import "./catalogAnimation.css";
 
 function CatalogPage() {
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const categoryFromURL = queryParams.get("category");
+    const dispatch = useDispatch();
+  const { items: services, loading, error } = useSelector((state) => state.services);
 
-  const [services, setServices] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [currentPlace, setCurrentPlace] = useState(categoryFromURL || null);
+  const [currentPlace, setCurrentPlace] = useState(null);
   const [currentSort, setCurrentSort] = useState(null);
   const [currentSearch, setCurrentSearch] = useState("");
-  const [loading, setLoading] = useState(true);
-    const [cartCount, setCartCount] = useState(0);
-
-    const [editingService, setEditingService] = useState(null);
+  const [editingService, setEditingService] = useState(null);
+  const [cartCount, setCartCount] = useState(0);
 
   const servicesPerPage = 4;
 
-  // Fetch services
-useEffect(() => {
-  setServices(servicesData.services); // берем массив services
-  setLoading(false);
-}, []);
-
-// Обновляем currentPlace, если изменился параметр category
   useEffect(() => {
-    setCurrentPlace(categoryFromURL || null);
-    setCurrentPage(1); // сбрасываем пагинацию
-  }, [categoryFromURL]);
+    dispatch(fetchServices());
+  }, [dispatch]);
 
-  // Добавление нового сервиса
-const handleAddService = () => {
-  const newService = {
-    id: String(Date.now()),
-    title: "New Service",
-    category: "Other",
-    price: 0,
-    photoURL: "./Assets/placeholder.png",
-    place: "Unknown",
+    useEffect(() => {
+    if (error) {
+      alert(error);
+      dispatch(clearError());
+    }
+  }, [error, dispatch]);
+
+  const handleAddService = () => {
+    const newService = {
+      id: String(Date.now()),
+      title: "New Service",
+      category: "Other",
+      price: 100,
+      photoURL: "./Assets/placeholder.png",
+      place: "Unknown",
+    };
+    dispatch(addService(newService));
   };
-  setServices([newService, ...services]); // добавляем в начало списка
-};
 
-// Удаление сервиса
-const handleDeleteService = (id) => {
-  if (window.confirm("Are you sure you want to delete this service?")) {
-    setServices(services.filter((s) => s.id !== id));
-  }
-};
+  const handleDeleteService = (id) => {
+    if (window.confirm("Are you sure you want to delete this service?")) {
+      dispatch(deleteService(id));
+    }
+  };
 
-// Редактирование сервиса
-const handleUpdateService = (updatedService) => {
-  setServices(
-    services.map((s) => (s.id === updatedService.id ? updatedService : s))
-  );
-};
-
-// Функция открытия модалки
-const handleOpenEdit = (service) => {
-  setEditingService(service);
-};
-
-// Функция закрытия модалки
-const handleCloseEdit = () => {
-  setEditingService(null);
-};
-
-// Функция сохранения
-const handleSaveEdit = (updatedService) => {
-  handleUpdateService(updatedService);
-  setEditingService(null);
-};
+  const handleUpdateService = (updatedService) => {
+    dispatch(updateService(updatedService));
+  };
 
   // Filtered, searched, sorted services
   const filteredServices = services
@@ -112,39 +95,29 @@ const handleSaveEdit = (updatedService) => {
 const addToCart = (serviceId) => {
     alert("The Cart page is in the works currently! Thanks for attention :)");
   };
-  return (
+   return (
     <>
       <Preloader loading={loading} />
       <Header cartCount={cartCount} />
-
       <div className="container">
         <CatalogBanner />
 
         <FilterSortCart
           currentPlace={currentPlace}
-          setCurrentPlace={(place) => {
-            setCurrentPlace(place);
-            setCurrentPage(1);
-          }}
+          setCurrentPlace={setCurrentPlace}
           currentSort={currentSort}
-          setCurrentSort={(sort) => {
-            setCurrentSort(sort);
-            setCurrentPage(1);
-          }}
+          setCurrentSort={setCurrentSort}
           currentSearch={currentSearch}
-          setCurrentSearch={(search) => {
-            setCurrentSearch(search);
-            setCurrentPage(1);
-          }}
-           onAddService={handleAddService}
+          setCurrentSearch={setCurrentSearch}
+          onAddService={handleAddService}
         />
 
         <ServiceList
-  services={paginatedServices}
-  onEdit={handleUpdateService}
-  onDelete={handleDeleteService}
-  onOpenEdit={handleOpenEdit}
-/>
+          services={paginatedServices}
+          onEdit={handleUpdateService}
+          onDelete={handleDeleteService}
+          onOpenEdit={setEditingService}
+        />
 
         <Pagination
           currentPage={currentPage}
@@ -155,12 +128,12 @@ const addToCart = (serviceId) => {
 
       <Footer />
       {editingService && (
-  <ItemEditForm
-    item={editingService}
-    onSave={handleSaveEdit}
-    onCancel={handleCloseEdit}
-  />
-)}
+        <ItemEditForm
+          item={editingService}
+          onSave={handleUpdateService}
+          onCancel={() => setEditingService(null)}
+        />
+      )}
     </>
   );
 }

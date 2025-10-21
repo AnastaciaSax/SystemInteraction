@@ -1,41 +1,57 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { useSelector, useDispatch } from "react-redux";
 import Preloader from "../../components/Preloader/Preloader";
 import ItemBanner from "../../components/ItemBanner/ItemBanner";
 import ItemContent from "../../components/ItemContent/ItemContent";
 import ItemEditForm from "../../components/ItemEditForm/ItemEditForm";
 
+import {
+  fetchServices,
+  selectServices,
+   selectError,
+  selectLoading,
+  updateService,
+  clearError,
+} from "../../slices/servicesSlice";
+
 import "./ItemDetails.css";
 import "./ItemDetailsAdaptation.css";
 
-import servicesData from "../../data/db.json";
-
 const ItemDetails = () => {
+  const { t } = useTranslation();
   const { id } = useParams();
+  const dispatch = useDispatch();
 
-  const [services, setServices] = useState([]);
-  const [item, setItem] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const services = useSelector(selectServices);
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
+
   const [isEditing, setIsEditing] = useState(false);
+  const [item, setItem] = useState(null);
 
-  // грузим список
+  // загружаем сервисы
   useEffect(() => {
-    setServices(servicesData.services);
-  }, []);
+    dispatch(fetchServices());
+  }, [dispatch]);
+  
+      useEffect(() => {
+      if (error) {
+        alert(error);
+        dispatch(clearError());
+      }
+    }, [error, dispatch]);
+  
 
-  // ищем выбранный элемент
+  // находим текущий элемент после загрузки
   useEffect(() => {
     const found = services.find((el) => el.id === id);
     setItem(found);
-    setLoading(false);
   }, [id, services]);
 
   const handleUpdate = (updatedItem) => {
-    const updated = services.map((el) =>
-      el.id === updatedItem.id ? updatedItem : el
-    );
-    setServices(updated);
-    setItem(updatedItem);
+    dispatch(updateService(updatedItem));
     setIsEditing(false);
   };
 
@@ -44,8 +60,8 @@ const ItemDetails = () => {
   if (!item) {
     return (
       <div className="not-found-message">
-        <p>Item not found</p>
-        <Link to="/catalog">Back to catalog</Link>
+        <p>{t("itemNotFound")}</p>
+        <Link to="/catalog">{t("backToCatalog")}</Link>
       </div>
     );
   }
@@ -66,7 +82,7 @@ const ItemDetails = () => {
 
       {!isEditing && (
         <button className="edit-btn" onClick={() => setIsEditing(true)}>
-          Edit
+          {t("editServiceTitle")}
         </button>
       )}
     </div>

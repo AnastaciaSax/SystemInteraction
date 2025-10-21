@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import "./ItemDetails.css"; 
 
 const ItemEditForm = ({ item, onSave, onCancel }) => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState(item);
 
   const handleChange = (e) => {
@@ -17,22 +19,22 @@ const ItemEditForm = ({ item, onSave, onCancel }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <h2>Edit Service</h2>
+        <h2>{t("editServiceTitle")}</h2>
         <form className="edit-form" onSubmit={handleSubmit}>
           <label>
-            Title:
+            {t("titlePlaceholder")}:
             <input name="title" value={formData.title} onChange={handleChange} />
           </label>
           <label>
-            Category:
+            {t("categoryPlaceholder")}:
             <input name="category" value={formData.category} onChange={handleChange} />
           </label>
           <label>
-            Place:
+            {t("placeLabel")}:
             <input name="place" value={formData.place} onChange={handleChange} />
           </label>
           <label>
-            Price:
+            {t("pricePlaceholder")}:
             <input
               type="number"
               name="price"
@@ -41,8 +43,8 @@ const ItemEditForm = ({ item, onSave, onCancel }) => {
             />
           </label>
           <div className="edit-form-buttons">
-            <button type="submit" className="edit-btn">Save</button>
-            <button type="button" className="edit-btn" onClick={onCancel}>Cancel</button>
+            <button type="submit" className="edit-btn">{t("saveButton")}</button>
+            <button type="button" className="edit-btn" onClick={onCancel}>{t("cancelButton")}</button>
           </div>
         </form>
       </div>
