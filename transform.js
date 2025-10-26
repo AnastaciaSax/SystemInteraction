@@ -2,9 +2,9 @@ import fs from "fs";
 import { Transform } from "stream";
 import { resolve } from "path";
 
-// csv - table file
-const inputPath = resolve("data", "service_index.json");
-const outputPath = resolve("data", "services.csv");
+// пути к файлам
+const inputPath = resolve("src/data/service_index.json"); // JSON с сервисами
+const outputPath = resolve("src/data/services.csv");      // куда писать CSV
 
 // Трансформ Stream: JSON -> CSV
 const transformStream = new Transform({
@@ -24,7 +24,7 @@ const transformStream = new Transform({
 });
 
 // Читаем исходный JSON через поток
-const readStream = fs.createReadStream(inputPath);
+const readStream = fs.createReadStream(inputPath, { encoding: "utf8" });
 const writeStream = fs.createWriteStream(outputPath);
 
 readStream
@@ -32,4 +32,7 @@ readStream
   .pipe(writeStream)
   .on("finish", () => {
     console.log(`✅ Transform completed: ${outputPath} created.`);
+  })
+  .on("error", (err) => {
+    console.error("❌ Transform error:", err.message);
   });

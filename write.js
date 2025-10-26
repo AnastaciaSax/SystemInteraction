@@ -15,7 +15,8 @@ if (isNaN(price)) {
   process.exit(1);
 }
 
-const indexPath = resolve("data", "service_index.json");
+// Путь к JSON
+const indexPath = resolve("src/data/service_index.json");
 
 // Проверяем наличие файла
 if (!fs.existsSync(indexPath)) {
@@ -27,26 +28,17 @@ if (!fs.existsSync(indexPath)) {
 const indexData = JSON.parse(fs.readFileSync(indexPath, "utf8"));
 
 // Создаем новую услугу
-const newId = (Date.now()).toString();
-const newService = {
-  id: newId,
-  title,
-  category,
-  place,
-  price,
-  photoURL
-};
+const newId = Date.now().toString();
+const newService = { id: newId, title, category, place, price, photoURL };
 
 // Добавляем в массив
 indexData.services.push(newService);
 
-// Открываем поток записи
+// Записываем обновленные данные через поток
 const writeStream = fs.createWriteStream(indexPath);
-
-// Записываем обновленные данные
 writeStream.write(JSON.stringify(indexData, null, 2));
-
 writeStream.end(() => {
   console.log(`✅ Service "${title}" added to service_index.json`);
 });
+
 
