@@ -1,29 +1,35 @@
 import fs from "fs";
-import { resolve } from "path";
+import path from "path";
 
-const filePath = resolve("data", "service_index.json");
-
-// Проверяем наличие файла
-if (!fs.existsSync(filePath)) {
-  console.error("❌ File service_index.json not found.");
+const [,, id] = process.argv;
+if (!id) {
+  console.error("USE: node read.js <id>");
   process.exit(1);
 }
 
-// Создаем поток для чтения
-const readStream = fs.createReadStream(filePath, { encoding: "utf8" });
+const dataDir = path.join("src", "data");
+const indexPath = path.join(dataDir, "service_index.json");
+const servicesDir = path.join(dataDir, "services");
 
-console.log("📖 Reading service_index.json in chunks...\n");
+if (!fs.existsSync(indexPath)) {
+  console.error("service_index.json not found");
+  process.exit(1);
+}
 
-readStream.on("data", (chunk) => {
-  console.log("📦 Received chunk:");
-  console.log(chunk);
-});
+const indexData = JSON.parse(fs.readFileSync(indexPath, "utf8"));
+const service = indexData.services.find(s => s.id === id);
 
-readStream.on("end", () => {
-  console.log("\n✅ File reading completed.");
-});
+if (!service) {
+  console.error("Entry not found");
+  process.exit(1);
+}
 
-readStream.on("error", (err) => {
-  console.error("❌ Reading file ERROR:", err.message);
-});
+const filePath = path.join(servicesDir, service.filename);
+if (!fs.existsSync(filePath)) {
+  console.error("Data entry file is absent");
+  process.exit(1);
+}
+
+const content = JSON.parse(fs.readFileSync(filePath, "utf8"));
+console.log(JSON.stringify(content, null, 2));
 

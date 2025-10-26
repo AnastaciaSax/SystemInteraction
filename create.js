@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-// process.argv — argument array for Node
+// args: title category place price [photoURL]
 const [,, title, category, place, priceArg, photoURL = "/Assets/Logo.png"] = process.argv;
 
 if (!title || !category || !place || !priceArg) {
@@ -11,15 +11,15 @@ if (!title || !category || !place || !priceArg) {
 
 const price = Number(priceArg);
 if (isNaN(price)) {
-  console.error("ERROR: 'price' is a digit");
+  console.error("ERROR: 'price' must be a number");
   process.exit(1);
 }
 
-const dataDir = path.join("data");
+const dataDir = path.join("src", "data");
 const servicesDir = path.join(dataDir, "services");
 const indexPath = path.join(dataDir, "service_index.json");
 
-// Проверка директорий
+// Создаем папки, если нет
 if (!fs.existsSync(servicesDir)) fs.mkdirSync(servicesDir, { recursive: true });
 
 // Чтение индекса
@@ -32,30 +32,17 @@ const id = Date.now().toString();
 const filename = `service_${id}.json`;
 const filePath = path.join(servicesDir, filename);
 
-// Проверяем, не существует ли уже такого файла
-if (fs.existsSync(filePath)) {
-  console.error("FS ERROR: Entry exists");
-  process.exit(1);
-}
-
 // Новый объект
-const newService = { id, title, category, place, price, photoURL };
+const newService = { id, title, category, place, price, photoURL, filename };
 
-// Сохраняем в отдельный файл
+// Сохраняем отдельный файл
 fs.writeFileSync(filePath, JSON.stringify(newService, null, 2));
 
-// Добавляем в индекс
+// Обновляем индекс
 indexData.services.push({
-  id,
-  title,
-  category,
-  place,
-  price,
-  photoURL,
-  filename,
+  id, title, category, place, price, photoURL, filename
 });
-
-// Сохраняем обновлённый индекс
 fs.writeFileSync(indexPath, JSON.stringify(indexData, null, 2));
 
 console.log(`✅ Entry added: ${title} (ID: ${id})`);
+
