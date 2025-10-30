@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Order Your Future Design</title>
+</head>
+<body>
+  <h1>Design Service System</h1>
+  <div id="services"></div>
+
+  <button id="download-json">Download JSON</button>
+  <button id="download-html">Download HTML</button>
+  <button id="download-xml">Download XML</button>
+
+  <script>
+    const userId = 2; // test user
+
+    async function loadServices() {
+      const res = await fetch("/api/services");
+      const data = await res.json();
+      const container = document.getElementById("services");
+
+      container.innerHTML = data
+        .map(s => `
+          <div>
+            <b>${s.title}</b> (${s.place}) — $${s.price}
+            <button onclick="orderService(${s.id})">Order</button>
+          </div>
+        `)
+        .join("");
+    }
+
+    async function orderService(serviceId) {
+      const res = await fetch("/api/book", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, serviceId }),
+      });
+
+      const result = await res.json();
+      alert(result.message || result.error);
+    }
+
+    document.getElementById("download-json").onclick = () => {
+      window.open("/api/export", "_blank");
+    };
+
+    document.getElementById("download-html").onclick = () => {
+      fetch("/api/export", { headers: { Accept: "text/html" } })
+        .then(res => res.text())
+        .then(html => {
+          const blob = new Blob([html], { type: "text/html" });
+          const a = document.createElement("a");
+          a.href = URL.createObjectURL(blob);
+          a.download = "services.html";
+          a.click();
+        });
+    };
+
+    document.getElementById("download-xml").onclick = () => {
+      fetch("/api/export", { headers: { Accept: "application/xml" } })
+        .then(res => res.text())
+        .then(xml => {
+          const blob = new Blob([xml], { type: "application/xml" });
+          const a = document.createElement("a");
+          a.href = URL.createObjectURL(blob);
+          a.download = "services.xml";
+          a.click();
+        });
+    };
+
+    loadServices();
+  </script>
+</body>
+</html>
+
