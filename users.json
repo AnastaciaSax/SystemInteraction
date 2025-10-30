@@ -1,0 +1,125 @@
+{
+    "users": [
+    {
+      "id": "1",
+      "name": "Nicole",
+      "surname": "Brown",
+      "email": "alice@example.com",
+      "phone": "+375291112233",
+      "birthdate": "2000-01-01",
+      "nickname": "nicole2000",
+      "password": "Nicole123",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "name": "Bob",
+      "surname": "Smith",
+      "email": "bob@example.com",
+      "phone": "+375291234567",
+      "birthdate": "1999-05-15",
+      "nickname": "bob_the_builder",
+      "password": "Bob123",
+      "role": "user"
+    },
+    {
+      "id": "3",
+      "name": "Charlie",
+      "surname": "Davis",
+      "email": "charlie@example.com",
+      "phone": "+375292345678",
+      "birthdate": "1990-03-10",
+      "nickname": "charlie_chap",
+      "password": "Charlie123",
+      "role": "user"
+    },
+    {
+      "id": "4",
+      "name": "Diana",
+      "surname": "Evans",
+      "email": "diana@example.com",
+      "phone": "+375293456789",
+      "birthdate": "1995-07-20",
+      "nickname": "diana_designs",
+      "password": "Diana123",
+      "role": "user"
+    },
+    {
+      "id": "5",
+      "name": "Ethan",
+      "surname": "Foster",
+      "email": "ethan@example.com",
+      "phone": "+375294567890",
+      "birthdate": "1988-02-14",
+      "nickname": "ethanx88",
+      "password": "Ethan123",
+      "role": "user"
+    },
+    {
+      "id": "6",
+      "name": "Fiona",
+      "surname": "Garcia",
+      "email": "fiona@example.com",
+      "phone": "+375295678901",
+      "birthdate": "1996-11-22",
+      "nickname": "fiona_fox",
+      "password": "Fiona123",
+      "role": "user"
+    },
+    {
+      "id": "7",
+      "name": "George",
+      "surname": "Hill",
+      "email": "george@example.com",
+      "phone": "+375296789012",
+      "birthdate": "2001-09-09",
+      "nickname": "georgeh",
+      "password": "George123",
+      "role": "user"
+    },
+    {
+      "id": "8",
+      "name": "Hannah",
+      "surname": "Irwin",
+      "email": "hannah@example.com",
+      "phone": "+375297890123",
+      "birthdate": "1992-12-01",
+      "nickname": "hannahbee",
+      "password": "Hannah123",
+      "role": "user"
+    },
+    {
+      "id": "9",
+      "name": "Isaac",
+      "surname": "Jones",
+      "email": "isaac@example.com",
+      "phone": "+375298901234",
+      "birthdate": "1998-06-06",
+      "nickname": "isaac1998",
+      "password": "Isaac123",
+      "role": "user"
+    },
+    {
+      "id": "10",
+      "name": "Julia",
+      "surname": "King",
+      "email": "julia@example.com",
+      "phone": "+375299012345",
+      "birthdate": "1997-04-30",
+      "nickname": "julzking",
+      "password": "Julia123",
+      "role": "user"
+    },
+    {
+      "id": "6f75",
+      "name": "Hafafa",
+      "surname": "Jdsgsf",
+      "email": "alice@example.com",
+      "phone": "+375336091017",
+      "birthdate": "2000-08-17",
+      "nickname": "quick_lion173",
+      "password": "CY*puTt)wsY!",
+      "role": "user"
+    }
+  ]
+}
