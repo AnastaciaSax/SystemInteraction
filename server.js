@@ -114,7 +114,7 @@ app.get("/api/export", (req, res) => {
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send("Ошибка сервера!");
+  res.status(500).send("Server ERROR!");
 });
 
 

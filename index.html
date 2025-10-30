@@ -6,11 +6,17 @@
 </head>
 <body>
   <h1>Design Service System</h1>
+
+  <!-- Список услуг -->
   <div id="services"></div>
 
   <button id="download-json">Download JSON</button>
   <button id="download-html">Download HTML</button>
   <button id="download-xml">Download XML</button>
+
+  <!-- Корзина -->
+  <h2>My Orders</h2>
+  <div id="cart"></div>
 
   <script>
     const userId = 2; // test user
@@ -30,6 +36,22 @@
         .join("");
     }
 
+    async function loadCart() {
+      const res = await fetch("/api/cart", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId })
+      });
+      const cart = await res.json();
+      const services = await (await fetch("/api/services")).json();
+
+      const container = document.getElementById("cart");
+      container.innerHTML = cart.map(c => {
+        const s = services.find(s => s.id == c.serviceId);
+        return `<div>${s.title} (${s.place}) — $${s.price}</div>`;
+      }).join("");
+    }
+
     async function orderService(serviceId) {
       const res = await fetch("/api/book", {
         method: "POST",
@@ -39,11 +61,21 @@
 
       const result = await res.json();
       alert(result.message || result.error);
+
+      // Обновляем корзину после заказа
+      loadCart();
     }
 
-    document.getElementById("download-json").onclick = () => {
-      window.open("/api/export", "_blank");
-    };
+ document.getElementById("download-json").onclick = async () => {
+  const res = await fetch("/api/export", { headers: { Accept: "application/json" } });
+  const data = await res.json();
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "services.json";
+  a.click();
+};
+
 
     document.getElementById("download-html").onclick = () => {
       fetch("/api/export", { headers: { Accept: "text/html" } })
@@ -69,8 +101,9 @@
         });
     };
 
+    // Загружаем услуги и корзину при старте
     loadServices();
+    loadCart();
   </script>
 </body>
 </html>
-
