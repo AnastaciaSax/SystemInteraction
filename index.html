@@ -36,21 +36,36 @@
         .join("");
     }
 
-    async function loadCart() {
-      const res = await fetch("/api/cart", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId })
-      });
-      const cart = await res.json();
-      const services = await (await fetch("/api/services")).json();
+  async function loadCart() {
+  const res = await fetch("/api/cart", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ userId })
+  });
+  const cart = await res.json();
+  const services = await (await fetch("/api/services")).json();
 
-      const container = document.getElementById("cart");
-      container.innerHTML = cart.map(c => {
-        const s = services.find(s => s.id == c.serviceId);
-        return `<div>${s.title} (${s.place}) — $${s.price}</div>`;
-      }).join("");
-    }
+  const container = document.getElementById("cart");
+  container.innerHTML = cart.map(c => {
+    const s = services.find(s => s.id == c.serviceId);
+    return `
+      <div>
+        ${s.title} (${s.place}) — $${s.price}
+        <button onclick="cancelOrder('${c.id}')">Cancel</button>
+      </div>
+    `;
+  }).join("");
+}
+
+async function cancelOrder(bookingId) {
+  const res = await fetch(`/api/book/${bookingId}`, {
+    method: "DELETE"
+  });
+  const result = await res.json();
+  alert(result.message || result.error);
+  loadCart(); // обновляем корзину после удаления
+}
+
 
     async function orderService(serviceId) {
       const res = await fetch("/api/book", {
