@@ -1,18 +1,14 @@
-const sequelize = require('../config/database');
-const Country = require('./Country');
-const Route = require('./Route');
-const Sale = require('./Sale');
+import { configureStore } from '@reduxjs/toolkit';
+import countriesReducer from './slices/countriesSlice';
+import routesReducer from './slices/routesSlice';
+import salesReducer from './slices/salesSlice';
 
-// Связи между моделями
-Country.hasMany(Route, { foreignKey: 'countryId' });
-Route.belongsTo(Country, { foreignKey: 'countryId' });
+export const store = configureStore({
+  reducer: {
+    countries: countriesReducer,
+    routes: routesReducer,
+    sales: salesReducer,
+  },
+});
 
-Route.hasMany(Sale, { foreignKey: 'routeId' });
-Sale.belongsTo(Route, { foreignKey: 'routeId' });
-
-module.exports = {
-  sequelize,
-  Country,
-  Route,
-  Sale
-};
+export default store;
