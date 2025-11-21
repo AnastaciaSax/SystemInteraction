@@ -1,67 +1,78 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container, Row, Col, Button, Alert } from 'react-bootstrap';
-import { fetchRoutes, createRoute, updateRoute, deleteRoute } from '../../store/slices/routesSlice';
-import { fetchCountries } from '../../store/slices/countriesSlice';
-import RouteList from '../../components/routes/RouteList';
-import RouteForm from '../../components/routes/RouteForm';
+import { fetchSales, createSale, updateSale, deleteSale } from '../../store/slices/salesSlice';
+import { fetchRoutes } from '../../store/slices/routesSlice';
+import SaleList from '../../components/sales/SaleList';
+import SaleForm from '../../components/sales/SaleForm';
 import LoadingSpinner from '../../components/common/LoadingSpinner';
 import ConfirmModal from '../../components/common/ConfirmModal';
-import styles from './Routes.module.css';
+import SearchFilter from '../../components/common/SearchFilter';
+import styles from './Sales.module.css';
 
-const RoutesPage = () => {
+const SalesPage = () => {
   const dispatch = useDispatch();
-  const { items: routes, loading, error } = useSelector((state) => state.routes);
-  const { items: countries } = useSelector((state) => state.countries);
+  const { items: sales, loading, error } = useSelector((state) => state.sales);
+  const { items: routes } = useSelector((state) => state.routes);
   const [showForm, setShowForm] = useState(false);
-  const [editingRoute, setEditingRoute] = useState(null);
+  const [editingSale, setEditingSale] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [routeToDelete, setRouteToDelete] = useState(null);
+  const [saleToDelete, setSaleToDelete] = useState(null);
+  const [filters, setFilters] = useState({});
 
   useEffect(() => {
+    dispatch(fetchSales());
     dispatch(fetchRoutes());
-    dispatch(fetchCountries());
   }, [dispatch]);
 
   const handleCreate = () => {
-    setEditingRoute(null);
+    setEditingSale(null);
     setShowForm(true);
   };
 
-  const handleEdit = (route) => {
-    setEditingRoute(route);
+  const handleEdit = (sale) => {
+    setEditingSale(sale);
     setShowForm(true);
   };
 
-  const handleDeleteClick = (route) => {
-    setRouteToDelete(route);
+  const handleDeleteClick = (saleId) => {
+    const sale = sales.find(s => s.id === saleId);
+    setSaleToDelete(sale);
     setShowDeleteModal(true);
   };
 
   const handleDeleteConfirm = async () => {
-    if (routeToDelete) {
+    if (saleToDelete) {
       try {
-        await dispatch(deleteRoute(routeToDelete.id)).unwrap();
+        await dispatch(deleteSale(saleToDelete.id)).unwrap();
         setShowDeleteModal(false);
-        setRouteToDelete(null);
+        setSaleToDelete(null);
       } catch (error) {
-        alert(`Cannot delete route: ${error.message}`);
+        alert(`Cannot delete sale: ${error.message}`);
       }
     }
   };
 
-  const handleSubmit = async (routeData) => {
+  const handleSubmit = async (saleData) => {
     try {
-      if (editingRoute) {
-        await dispatch(updateRoute({ id: editingRoute.id, ...routeData })).unwrap();
+      if (editingSale) {
+        await dispatch(updateSale({ id: editingSale.id, ...saleData })).unwrap();
       } else {
-        await dispatch(createRoute(routeData)).unwrap();
+        await dispatch(createSale(saleData)).unwrap();
       }
       setShowForm(false);
-      setEditingRoute(null);
+      setEditingSale(null);
     } catch (error) {
-      console.error('Failed to save route:', error);
+      console.error('Failed to save sale:', error);
     }
+  };
+
+  const handleSearch = (searchTerm) => {
+    setFilters(prev => ({ ...prev, search: searchTerm }));
+  };
+
+  const handleFilter = (filterValues) => {
+    setFilters(filterValues);
   };
 
   if (loading) return <LoadingSpinner />;
@@ -71,8 +82,8 @@ const RoutesPage = () => {
       <div className={styles.header}>
         <Row className="align-items-center">
           <Col>
-            <h1 className={styles.title}>Routes Management</h1>
-            <p className={styles.subtitle}>Create and manage tour routes and packages</p>
+            <h1 className={styles.title}>Sales Management</h1>
+            <p className={styles.subtitle}>Track and manage tour package sales</p>
           </Col>
           <Col xs="auto">
             <Button 
@@ -80,7 +91,7 @@ const RoutesPage = () => {
               onClick={handleCreate}
               className={styles.createButton}
             >
-              + Add New Route
+              + Add New Sale
             </Button>
           </Col>
         </Row>
@@ -92,24 +103,53 @@ const RoutesPage = () => {
         </Alert>
       )}
 
+      {/* Search and Filter Section */}
+      {!showForm && (
+        <div className={styles.filterSection}>
+          <SearchFilter
+            onSearch={handleSearch}
+            onFilter={handleFilter}
+            placeholder="Search sales..."
+            filters={[
+              {
+                name: 'routeId',
+                label: 'Route',
+                type: 'select',
+                options: routes.map(route => ({
+                  value: route.id,
+                  label: route.name
+                }))
+              },
+              {
+                name: 'minQuantity',
+                label: 'Min Quantity',
+                type: 'number',
+                placeholder: 'Min'
+              }
+            ]}
+            initialValues={filters}
+          />
+        </div>
+      )}
+
       <Row>
         <Col>
           {showForm ? (
             <div className={styles.formContainer}>
-              <RouteForm
-                route={editingRoute}
-                countries={countries}
+              <SaleForm
+                sale={editingSale}
+                routes={routes}
                 onSubmit={handleSubmit}
                 onCancel={() => {
                   setShowForm(false);
-                  setEditingRoute(null);
+                  setEditingSale(null);
                 }}
               />
             </div>
           ) : (
             <div className={styles.listContainer}>
-              <RouteList
-                routes={routes}
+              <SaleList
+                sales={sales}
                 onEdit={handleEdit}
                 onDelete={handleDeleteClick}
               />
@@ -122,8 +162,8 @@ const RoutesPage = () => {
         show={showDeleteModal}
         onHide={() => setShowDeleteModal(false)}
         onConfirm={handleDeleteConfirm}
-        title="Delete Route"
-        message={`Are you sure you want to delete "${routeToDelete?.name}"? This action cannot be undone.`}
+        title="Delete Sale"
+        message={`Are you sure you want to delete this sale record? This action cannot be undone.`}
         confirmText="Delete"
         variant="danger"
       />
@@ -131,4 +171,4 @@ const RoutesPage = () => {
   );
 };
 
-export default RoutesPage;
+export default SalesPage;
