@@ -1,0 +1,284 @@
+/* Основные стили приложения */
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.min-vh-100 {
+  min-height: 100vh;
+}
+
+.table th {
+  background-color: #343a40;
+  color: white;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table td {
+  color: #212529;
+  vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.card {
+  color: #212529;
+}
+
+.card-title {
+  color: #2c3e50;
+}
+
+.text-muted {
+  color: #6c757d !important;
+}
+
+/* Исправление для Badge */
+.badge {
+  color: white !important;
+}
+
+.badge.bg-outline-secondary {
+  background-color: transparent !important;
+  color: #6c757d !important;
+  border: 1px solid #6c757d;
+}
+
+/* Улучшение контрастности для форм */
+.form-label {
+  color: #495057;
+  font-weight: 500;
+}
+
+.form-control, .form-select {
+  color: #495057;
+  background-color: #fff;
+}
+
+.form-control:focus, .form-select:focus {
+  color: #495057;
+  background-color: #fff;
+}
+
+/* Исправление для pagination */
+.pagination .page-link {
+  color: #0d6efd;
+}
+
+.pagination .page-item.active .page-link {
+  color: white;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+/* Улучшение видимости в таблицах */
+.table-responsive table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table-responsive th,
+.table-responsive td {
+  padding: 0.75rem;
+  border: 1px solid #dee2e6;
+}
+
+/* Исправление для карточек маршрутов */
+.card-img-top {
+  background-color: #f8f9fa;
+  min-height: 200px;
+  object-fit: cover;
+}
+
+/* Улучшение видимости текста в header */
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+  color: white;
+}
+
+/* Стили для карточек */
+.card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border: 1px solid #e9ecef;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для таблиц */
+.table th {
+  border-top: none;
+  font-weight: 600;
+  color: #495057;
+}
+
+/* Стили для кнопок */
+.btn {
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+/* Стили для навигации */
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  font-weight: 500;
+  border-radius: 4px;
+  margin: 0 2px;
+}
+
+.nav-link.active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Стили для форм */
+.form-control:focus,
+.form-select:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Стили для пагинации */
+.pagination {
+  margin-bottom: 0;
+}
+
+/* Стили для модальных окон */
+.modal-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+}
+.text-dark {
+  color: #212529 !important;
+}
+
+.table td, .table th {
+  color: #212529;
+}
+
+.card-title, .card-text {
+  color: #212529;
+}
+
+.form-label {
+  color: #495057;
+  font-weight: 500;
+}
+
+/* Улучшение видимости badge */
+.badge.bg-outline-secondary {
+  background-color: transparent !important;
+  color: #6c757d !important;
+  border: 1px solid #6c757d;
+}
+
+/* Улучшение hover эффектов */
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* Улучшение видимости в темных header */
+.bg-dark {
+  background-color: #343a40 !important;
+}
+
+.bg-dark .text-white {
+  color: #fff !important;
+}
+.table thead th {
+  background-color: #343a40 !important;
+  color: white !important;
+  border-bottom: 2px solid #454d55;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.5px;
+}
+
+/* Улучшение контрастности для всех таблиц */
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* Убедимся, что текст в ячейках хорошо виден */
+.table td {
+  color: #212529;
+  vertical-align: middle;
+  border-color: #dee2e6;
+}
+
+/* Улучшение для карточек */
+.card {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  font-weight: 600;
+}
+
+/* Улучшение для badge */
+.badge {
+  font-weight: 500;
+}
+
+.badge.bg-success {
+  background-color: #198754 !important;
+}
+
+.badge.bg-info {
+  background-color: #0dcaf0 !important;
+}
+
+.badge.bg-outline-secondary {
+  background-color: transparent !important;
+  color: #6c757d !important;
+  border: 1px solid #6c757d;
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+  .container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .card {
+    margin-bottom: 1rem;
+  }
+  
+  .table-responsive {
+    font-size: 0.875rem;
+  }
+}
+
+/* Стили для состояний загрузки */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+/* Стили для пустых состояний */
+.empty-state {
+  opacity: 0.7;
+}
