@@ -56,22 +56,28 @@ exports.getAllRoutes = async (req, res) => {
       ];
     }
 
-    // Получаем маршруты с populate страны
+    // УПРОЩАЕМ: убираем populate для виртуальных полей
     const routes = await Route.find(filters)
       .populate('country', 'name currency')
-      .populate({
-        path: 'salesCount',
-        select: '_id'
-      })
       .sort(sort)
       .skip(skip)
       .limit(parseInt(limit));
 
     const total = await Route.countDocuments(filters);
 
+    // Получаем количество продаж для каждого маршрута
+    const routesWithSalesCount = await Promise.all(
+      routes.map(async (route) => {
+        const routeObj = route.toObject();
+        const salesCount = await Sale.countDocuments({ route: route._id });
+        routeObj.salesCount = salesCount;
+        return routeObj;
+      })
+    );
+
     res.json({
       success: true,
-      data: routes,
+      data: routesWithSalesCount,
       pagination: {
         currentPage: parseInt(page),
         totalPages: Math.ceil(total / limit),
@@ -92,12 +98,7 @@ exports.getAllRoutes = async (req, res) => {
 exports.getRouteById = async (req, res) => {
   try {
     const route = await Route.findById(req.params.id)
-      .populate('country', 'name currency')
-      .populate({
-        path: 'sales',
-        select: 'sale_date quantity total_cost_usd',
-        options: { limit: 10, sort: { sale_date: -1 } }
-      });
+      .populate('country', 'name currency');
 
     if (!route) {
       return res.status(404).json({
@@ -105,6 +106,12 @@ exports.getRouteById = async (req, res) => {
         message: 'Route not found'
       });
     }
+
+    // Получаем продажи этого маршрута
+    const sales = await Sale.find({ route: route._id })
+      .select('sale_date quantity total_cost_usd')
+      .sort({ sale_date: -1 })
+      .limit(10);
 
     // Получаем статистику продаж для этого маршрута
     const salesStats = await Sale.aggregate([
@@ -123,6 +130,7 @@ exports.getRouteById = async (req, res) => {
     ]);
 
     const routeData = route.toObject();
+    routeData.sales = sales;
     if (salesStats.length > 0) {
       routeData.salesStats = salesStats[0];
     }

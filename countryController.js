@@ -1,4 +1,4 @@
-const { Country, Route } = require('../models');
+const { Country, Route, Sale } = require('../models');
 
 // Получить все страны с пагинацией, сортировкой, фильтрацией
 exports.getAllCountries = async (req, res) => {
@@ -29,21 +29,27 @@ exports.getAllCountries = async (req, res) => {
       filters.currency = currency;
     }
 
-    // Получаем страны с виртуальным полем routesCount
+    // УПРОЩАЕМ: убираем populate для виртуальных полей
     const countries = await Country.find(filters)
-      .populate({
-        path: 'routesCount',
-        select: '_id'
-      })
       .sort(sort)
       .skip(skip)
       .limit(parseInt(limit));
 
     const total = await Country.countDocuments(filters);
 
+    // Получаем количество маршрутов для каждой страны
+    const countriesWithRoutesCount = await Promise.all(
+      countries.map(async (country) => {
+        const countryObj = country.toObject();
+        const routesCount = await Route.countDocuments({ country: country._id });
+        countryObj.routesCount = routesCount;
+        return countryObj;
+      })
+    );
+
     res.json({
       success: true,
-      data: countries,
+      data: countriesWithRoutesCount,
       pagination: {
         currentPage: parseInt(page),
         totalPages: Math.ceil(total / limit),
@@ -63,12 +69,7 @@ exports.getAllCountries = async (req, res) => {
 // Получить страну по ID
 exports.getCountryById = async (req, res) => {
   try {
-    const country = await Country.findById(req.params.id)
-      .populate({
-        path: 'routes',
-        select: 'name price_usd duration_days is_active',
-        options: { limit: 10 }
-      });
+    const country = await Country.findById(req.params.id);
 
     if (!country) {
       return res.status(404).json({
@@ -77,33 +78,37 @@ exports.getCountryById = async (req, res) => {
       });
     }
 
+    // Получаем маршруты этой страны
+    const routes = await Route.find({ country: country._id })
+      .select('name price_usd duration_days is_active')
+      .limit(10);
+
     // Получаем статистику по продажам для этой страны
-    const salesStats = await Route.aggregate([
-      {
-        $match: { country: country._id }
-      },
+    const salesStats = await Sale.aggregate([
       {
         $lookup: {
-          from: 'sales',
-          localField: '_id',
-          foreignField: 'route',
-          as: 'sales'
+          from: 'routes',
+          localField: 'route',
+          foreignField: '_id',
+          as: 'routeInfo'
         }
       },
+      { $unwind: '$routeInfo' },
       {
-        $unwind: '$sales'
+        $match: { 'routeInfo.country': country._id }
       },
       {
         $group: {
           _id: null,
           totalSales: { $sum: 1 },
-          totalRevenue: { $sum: '$sales.total_cost_usd' },
-          totalTravelers: { $sum: '$sales.quantity' }
+          totalRevenue: { $sum: '$total_cost_usd' },
+          totalTravelers: { $sum: '$quantity' }
         }
       }
     ]);
 
     const countryData = country.toObject();
+    countryData.routes = routes;
     if (salesStats.length > 0) {
       countryData.salesStats = salesStats[0];
     }

@@ -19,6 +19,7 @@ const countrySchema = new mongoose.Schema({
   timestamps: true
 });
 
-// Убираем виртуальные поля для упрощения
+// УБИРАЕМ ВСЕ ВИРТУАЛЬНЫЕ ПОЛЯ - они вызывают ошибки
+
 const Country = mongoose.model('Country', countrySchema);
 module.exports = Country;

@@ -14,9 +14,8 @@ exports.getAllSales = async (req, res) => {
       maxQuantity,
       minTotalCost,
       maxTotalCost,
-      route,
-      country,
-      search
+      routeId,
+      countryId
     } = req.query;
 
     const skip = (page - 1) * limit;
@@ -29,12 +28,8 @@ exports.getAllSales = async (req, res) => {
     // Фильтрация по дате
     if (startDate || endDate) {
       filters.sale_date = {};
-      if (startDate) {
-        filters.sale_date.$gte = new Date(startDate);
-      }
-      if (endDate) {
-        filters.sale_date.$lte = new Date(endDate);
-      }
+      if (startDate) filters.sale_date.$gte = new Date(startDate);
+      if (endDate) filters.sale_date.$lte = new Date(endDate);
     }
 
     // Фильтрация по количеству
@@ -52,100 +47,33 @@ exports.getAllSales = async (req, res) => {
     }
 
     // Фильтрация по маршруту
-    if (route) {
-      filters.route = route;
+    if (routeId) {
+      filters.route = routeId;
     }
 
     // Фильтрация по стране (через маршрут)
-    if (country) {
+    if (countryId) {
       // Найдем все маршруты для этой страны
-      const routes = await Route.find({ country }).select('_id');
+      const routes = await Route.find({ country: countryId }).select('_id');
       const routeIds = routes.map(r => r._id);
       filters.route = { $in: routeIds };
     }
 
-    // Поиск по нескольким полям через lookup
-    if (search) {
-      // Этот фильтр будет применен после агрегации
-    }
-
-    // Используем агрегацию для сложных запросов
-    const pipeline = [
-      { $match: filters },
-      {
-        $lookup: {
-          from: 'routes',
-          localField: 'route',
-          foreignField: '_id',
-          as: 'routeInfo'
+    // УПРОЩАЕМ: используем populate вместо сложной агрегации
+    const sales = await Sale.find(filters)
+      .populate({
+        path: 'route',
+        select: 'name price_usd',
+        populate: {
+          path: 'country',
+          select: 'name currency'
         }
-      },
-      { $unwind: '$routeInfo' },
-      {
-        $lookup: {
-          from: 'countries',
-          localField: 'routeInfo.country',
-          foreignField: '_id',
-          as: 'countryInfo'
-        }
-      },
-      { $unwind: '$countryInfo' },
-      {
-        $project: {
-          sale_date: 1,
-          visa_cost_usd: 1,
-          quantity: 1,
-          total_cost_usd: 1,
-          route: {
-            _id: '$routeInfo._id',
-            name: '$routeInfo.name',
-            price_usd: '$routeInfo.price_usd',
-            country: {
-              _id: '$countryInfo._id',
-              name: '$countryInfo.name',
-              currency: '$countryInfo.currency'
-            }
-          }
-        }
-      }
-    ];
+      })
+      .sort(sort)
+      .skip(skip)
+      .limit(parseInt(limit));
 
-    // Добавляем поиск если есть
-    if (search) {
-      pipeline.push({
-        $match: {
-          $or: [
-            { 'route.name': { $regex: search, $options: 'i' } },
-            { 'route.country.name': { $regex: search, $options: 'i' } }
-          ]
-        }
-      });
-    }
-
-    // Добавляем сортировку и пагинацию
-    pipeline.push({ $sort: sort });
-    
-    const facetPipeline = [
-      { $skip: skip },
-      { $limit: parseInt(limit) }
-    ];
-
-    const countPipeline = [
-      { $count: 'total' }
-    ];
-
-    const results = await Sale.aggregate([
-      ...pipeline,
-      {
-        $facet: {
-          data: facetPipeline,
-          pagination: countPipeline
-        }
-      }
-    ]);
-
-    const sales = results[0].data;
-    const total = results[0].pagination[0] ? results[0].pagination[0].total : 0;
+    const total = await Sale.countDocuments(filters);
 
     res.json({
       success: true,
@@ -332,7 +260,7 @@ exports.deleteSale = async (req, res) => {
   }
 };
 
-// Получить статистику по продажам
+// Получить статистику по продажам (упрощенная версия)
 exports.getSalesStats = async (req, res) => {
   try {
     const { startDate, endDate, groupBy = 'country' } = req.query;
@@ -346,7 +274,8 @@ exports.getSalesStats = async (req, res) => {
       if (endDate) matchStage.sale_date.$lte = new Date(endDate);
     }
 
-    const pipeline = [
+    // УПРОЩАЕМ: используем более простую агрегацию
+    let pipeline = [
       { $match: matchStage },
       {
         $lookup: {
@@ -368,7 +297,6 @@ exports.getSalesStats = async (req, res) => {
       { $unwind: '$countryInfo' }
     ];
 
-    // Группировка по стране
     if (groupBy === 'country') {
       pipeline.push({
         $group: {
@@ -377,28 +305,10 @@ exports.getSalesStats = async (req, res) => {
           currency: { $first: '$countryInfo.currency' },
           total_quantity: { $sum: '$quantity' },
           total_revenue: { $sum: '$total_cost_usd' },
-          total_sales: { $sum: 1 },
-          average_sale: { $avg: '$total_cost_usd' },
-          routes: { $addToSet: '$routeInfo.name' }
+          total_sales: { $sum: 1 }
         }
       });
-    }
-    // Группировка по маршруту
-    else if (groupBy === 'route') {
-      pipeline.push({
-        $group: {
-          _id: '$routeInfo._id',
-          route_name: { $first: '$routeInfo.name' },
-          country_name: { $first: '$countryInfo.name' },
-          total_quantity: { $sum: '$quantity' },
-          total_revenue: { $sum: '$total_cost_usd' },
-          total_sales: { $sum: 1 },
-          average_sale: { $avg: '$total_cost_usd' }
-        }
-      });
-    }
-    // Группировка по месяцу
-    else if (groupBy === 'month') {
+    } else if (groupBy === 'month') {
       pipeline.push({
         $group: {
           _id: {
@@ -407,32 +317,10 @@ exports.getSalesStats = async (req, res) => {
           },
           total_quantity: { $sum: '$quantity' },
           total_revenue: { $sum: '$total_cost_usd' },
-          total_sales: { $sum: 1 },
-          average_sale: { $avg: '$total_cost_usd' }
+          total_sales: { $sum: 1 }
         }
       });
-      pipeline.push({
-        $sort: { '_id.year': 1, '_id.month': 1 }
-      });
     }
-
-    // Форматирование результата
-    pipeline.push({
-      $project: {
-        _id: 0,
-        id: '$_id',
-        country_name: 1,
-        route_name: 1,
-        currency: 1,
-        total_quantity: 1,
-        total_revenue: { $round: ['$total_revenue', 2] },
-        total_sales: 1,
-        average_sale: { $round: ['$average_sale', 2] },
-        routes: 1,
-        month: { $ifNull: ['$_id.month', null] },
-        year: { $ifNull: ['$_id.year', null] }
-      }
-    });
 
     const stats = await Sale.aggregate(pipeline);
 
@@ -444,8 +332,7 @@ exports.getSalesStats = async (req, res) => {
           _id: null,
           totalRevenue: { $sum: '$total_cost_usd' },
           totalSales: { $sum: 1 },
-          totalTravelers: { $sum: '$quantity' },
-          averageSaleValue: { $avg: '$total_cost_usd' }
+          totalTravelers: { $sum: '$quantity' }
         }
       }
     ]);
@@ -456,8 +343,7 @@ exports.getSalesStats = async (req, res) => {
       summary: totalStats[0] || {
         totalRevenue: 0,
         totalSales: 0,
-        totalTravelers: 0,
-        averageSaleValue: 0
+        totalTravelers: 0
       }
     });
   } catch (error) {
@@ -469,8 +355,6 @@ exports.getSalesStats = async (req, res) => {
     });
   }
 };
-
-// Проверить существование продажи
 exports.checkSaleExists = async (req, res) => {
   try {
     const { route, sale_date, quantity } = req.query;
